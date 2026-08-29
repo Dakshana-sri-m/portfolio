@@ -1596,6 +1596,20 @@
                 ))}
               </nav>
 
+              <div className="flex items-center gap-2.5">
+                
+                {/* Direct Download Resume Button */}
+                <a
+                  href={data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf"}
+                  download="Dakshana_Sri_M_Resume.pdf"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-emeraldAccent text-white hover:bg-ink shadow-sm hover:shadow transition-all"
+                  title="Download Dakshana Sri M Resume PDF"
+                >
+                  <Icon name="download" className="w-3.5 h-3.5" />
+                  <span className="font-bold">RESUME</span>
+                </a>
+
+                {/* In-App Preview Resume Button */}
                 <button
                   onClick={() => {
                     const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
@@ -1605,17 +1619,17 @@
                       caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
                     });
                   }}
-                  className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-white border border-ivory-border hover:border-emeraldAccent hover:text-emeraldAccent text-ink shadow-xs transition-all"
+                  className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-white border border-ivory-border hover:border-emeraldAccent hover:text-emeraldAccent text-ink shadow-xs transition-all"
                   title="View Resume / Curriculum Vitae"
                 >
                   <Icon name="file-text" className="w-3.5 h-3.5 text-emeraldAccent" />
-                  <span>RESUME</span>
+                  <span>VIEW</span>
                 </button>
 
                 {editMode && (
-                  <label className="cursor-pointer hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono-tag bg-emeraldAccent text-white hover:bg-ink shadow-xs transition-colors" title="Upload Resume PDF">
+                  <label className="cursor-pointer hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono-tag bg-ink text-white hover:bg-emeraldAccent shadow-xs transition-colors" title="Upload Resume PDF">
                     <Icon name="upload" className="w-3.5 h-3.5" />
-                    <span>📄 UPLOAD RESUME</span>
+                    <span>UPLOAD PDF</span>
                     <input
                       type="file"
                       accept=".pdf,image/*,.doc,.docx"
@@ -1625,6 +1639,7 @@
                   </label>
                 )}
 
+                {/* Edit Mode Toggle */}
                 <button
                   onClick={() => {
                     const next = !editMode;
