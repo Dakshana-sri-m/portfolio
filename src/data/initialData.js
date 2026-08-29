@@ -12,6 +12,7 @@ export const INITIAL_PORTFOLIO_DATA = {
     location: "Coimbatore / Tamil Nadu, India",
     portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
     avatarAlt: "Dakshana Sri M Editorial Portrait",
+    resumeUrl: "assets/resume/dakshana_sri_m_resume.pdf",
     socials: {
       email: "dakshanasrim1406@gmail.com",
       phone: "8870042836",
