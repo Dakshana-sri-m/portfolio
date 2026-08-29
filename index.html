@@ -428,9 +428,10 @@
           verificationCode: "DoK5HySvEFfwT4QnW",
           userId: "69c60734448ed0424a2a5632",
           focus: "Data Analysis & Forensic Technology",
+          signatories: "Tina McCreery (Chief Human Resources Officer, Deloitte)",
           description: "Completed practical simulation involving real-world forensic data investigations, anomaly pattern recognition, client-ready data communication, and analytical problem-solving.",
           credentialUrl: "https://www.theforage.com/simulations/deloitte/data-analytics",
-          pdfUrl: "",
+          pdfUrl: "assets/certificates/deloitte_data_analytics_certificate.pdf",
           image: ""
         },
         {
@@ -440,9 +441,10 @@
           issueDate: "July 5, 2026",
           verificationCode: "10432422",
           focus: "Data Preparation, Formulas, Analytical Worksheets",
+          signatories: "Krishna Kumar (CEO, Simplilearn)",
           description: "Mastered fundamental to intermediate spreadsheet analytics, complex lookup formulas, dynamic pivot modeling, and automated summary reports for business operations.",
           credentialUrl: "https://www.simplilearn.com/skillup-certificate",
-          pdfUrl: "",
+          pdfUrl: "assets/certificates/simplilearn_excel_certificate.pdf",
           image: ""
         },
         {
@@ -450,12 +452,12 @@
           title: "Two-Day Entrepreneurship & Venture Building Bootcamp",
           issuer: "Kumaraguru Institutions × River Venture Studios, Singapore",
           issueDate: "February 9–10, 2026",
-          signatories: "Dr. Viveka Kalidasan & Dr. D. Saravanan",
+          signatories: "Dr. Viveka Kalidasan (Founder-CEO, River Ventures) & Dr. D. Saravanan (Director - QA & Special Projects, KI)",
           focus: "Global Venture Ideation, Scalability & Market Validation",
           description: "Intensive venture design sprint covering venture capital evaluation criteria, customer discovery methodologies, unit economics validation, and cross-border commercialization strategies.",
           credentialUrl: "",
           pdfUrl: "",
-          image: ""
+          image: "assets/certificates/river_venture_studios_bootcamp.jpg"
         },
         {
           id: "cert-amypo",
@@ -463,6 +465,7 @@
           issuer: "Amypo",
           issueDate: "2026",
           focus: "Analytical Tools, Querying & Visual Analytics",
+          signatories: "Amypo Technical Evaluation Division",
           description: "Hands-on certification in SQL querying, dataset transformation, analytical dashboarding, and multi-dimensional reporting.",
           credentialUrl: "",
           pdfUrl: "",
@@ -897,10 +900,10 @@
             awardingBody: "Kumaraguru Institutions / KCLAS",
             date: "March 26, 2026",
             period: "Academic Year 2025–2026",
-            signatories: "Shri Shankar Vanavarayar & Dr. Deepesh",
+            signatories: "Shri Shankar Vanavarayar (President, KI) & Dr. Deepesh (Principal i/c, KCLAS)",
             recognition: "Awarded for outstanding meritorious academic performance, exemplary character, and multi-faceted contribution to the institutional ecosystem during the academic year 2025–2026.",
             category: "Institutional Academic Excellence",
-            image: ""
+            image: "assets/certificates/mahatma_gandhi_merit_scholarship.jpg"
           }
         ],
         research: [
@@ -911,7 +914,9 @@
             organizers: "VET Institute of Arts and Science (VETIAS), Thindal, Erode in association with Asia Pacific University of Technology and Innovation (APU), Malaysia",
             date: "August 18, 2026",
             authors: "Dakshana Sri M",
+            signatories: "Dr. V.P. Nallaswamy (Principal, VETIAS), Thiru. S.D. Chandrasekar (Secretary), Convenors",
             abstract: "Network traffic classification plays a pivotal role in automated Quality of Service (QoS) provisioning, intrusion detection, and adaptive bandwidth management. With the exponential adoption of transport layer encryption (TLS 1.3/QUIC), conventional deep packet inspection methods face severe limitations. This paper investigates machine learning classifiers trained on statistical flow-level behavioral signatures. Experimental evaluations demonstrate high classification accuracy across diverse traffic classes while maintaining minimal computational overhead suitable for real-time edge network monitoring.",
+            image: "assets/certificates/iccsam_2026_certificate.jpg",
             presentationUrl: "",
             paperUrl: "",
             abstractUrl: "",
@@ -1847,7 +1852,7 @@
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {data.certificates.map((c, cIdx) => (
-                  <div key={c.id || cIdx} className="p-7 paper-card rounded-sm flex flex-col justify-between">
+                  <div key={c.id || cIdx} className="p-7 paper-card rounded-sm flex flex-col justify-between group">
                     <div>
                       <div className="flex items-center justify-between font-mono-tag text-xs text-ink-dim mb-2">
                         <span className="text-emeraldAccent font-bold">{c.issuer}</span>
@@ -1862,11 +1867,25 @@
                         Focus: {c.focus}
                       </p>
 
+                      {c.image && (
+                        <div
+                          className="mb-4 h-48 w-full rounded overflow-hidden border border-ivory-border cursor-pointer group-hover:shadow-md transition-all relative"
+                          onClick={() => setLightboxImage({ src: c.image, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
+                        >
+                          <img src={c.image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span className="px-3 py-1 bg-white/95 rounded text-xs font-mono-tag font-bold shadow text-emeraldAccent">
+                              CLICK TO ZOOM CERTIFICATE
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
                       <p className="text-xs text-ink-muted font-light leading-relaxed mb-4">
                         {c.description}
                       </p>
 
-                      <div className="p-3 bg-ivory-light rounded border border-ivory-border font-mono-tag text-xs space-y-1 mb-4">
+                      <div className="p-3.5 bg-ivory-light rounded border border-ivory-border font-mono-tag text-xs space-y-1.5 mb-4">
                         {c.verificationCode && (
                           <div className="flex items-center justify-between text-[11px]">
                             <span className="text-ink-dim">CREDENTIAL CODE:</span>
@@ -1880,28 +1899,48 @@
                           </div>
                         )}
                         {c.signatories && (
-                          <div className="text-[11px] text-ink-dim">
-                            <span>SIGNATORIES: {c.signatories}</span>
+                          <div className="text-[11px] text-ink-dim pt-1 border-t border-ivory-border/60">
+                            <span className="font-semibold text-ink-muted">SIGNATORIES:</span> {c.signatories}
                           </div>
                         )}
                       </div>
                     </div>
 
                     <div className="pt-4 border-t border-ivory-border flex flex-wrap items-center justify-between gap-3 font-mono-tag text-xs">
-                      <div className="flex items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {c.image && (
+                          <button
+                            onClick={() => setLightboxImage({ src: c.image, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
+                            className="px-3 py-1.5 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1.5 shadow-xs"
+                          >
+                            <Icon name="image" className="w-3.5 h-3.5" />
+                            <span>VIEW CERTIFICATE</span>
+                          </button>
+                        )}
+                        {c.pdfUrl && (
+                          <a
+                            href={c.pdfUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="px-3 py-1.5 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1.5 shadow-xs"
+                          >
+                            <Icon name="file-text" className="w-3.5 h-3.5" />
+                            <span>VIEW PDF</span>
+                          </a>
+                        )}
                         {c.credentialUrl ? (
                           <a
                             href={c.credentialUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-3 py-1 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1 shadow-xs"
+                            className="px-3 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent hover:text-emeraldAccent rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs"
                           >
-                            <span>VIEW CREDENTIAL</span>
-                            <Icon name="external-link" className="w-3 h-3" />
+                            <span>VERIFY</span>
+                            <Icon name="external-link" className="w-3.5 h-3.5" />
                           </a>
-                        ) : (
+                        ) : !c.pdfUrl && !c.image ? (
                           <span className="text-[11px] text-ink-dim">VERIFICATION LINK NOT ADDED</span>
-                        )}
+                        ) : null}
                       </div>
 
                       {editMode && (
@@ -2668,37 +2707,60 @@
                       <p className="text-ink font-semibold">{r.conference}</p>
                       <p className="text-ink-dim">{r.organizers}</p>
                       <p className="text-emeraldAccent font-medium">Author: {r.authors}</p>
+                      {r.signatories && <p className="text-ink-dim text-[11px]">Signatories: {r.signatories}</p>}
                     </div>
 
-                    <div className="space-y-2">
-                      <span className="font-mono-tag text-[10px] text-emeraldAccent uppercase block font-bold">ABSTRACT SUMMARY</span>
-                      <p className="text-sm text-ink-muted font-light leading-relaxed">
-                        {r.abstract}
-                      </p>
-                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                      <div className="lg:col-span-8 space-y-4">
+                        <div className="space-y-2">
+                          <span className="font-mono-tag text-[10px] text-emeraldAccent uppercase block font-bold">ABSTRACT SUMMARY</span>
+                          <p className="text-sm text-ink-muted font-light leading-relaxed">
+                            {r.abstract}
+                          </p>
+                        </div>
 
-                    <div className="flex flex-wrap items-center gap-3 pt-2 font-mono-tag text-xs">
-                      <button
-                        onClick={() => showToast("ICCSAM 2026 Presentation Record Verified", "success")}
-                        className="px-4 py-2 bg-emeraldAccent text-white font-semibold rounded-sm hover:bg-ink flex items-center gap-2 shadow"
-                      >
-                        <Icon name="presentation" className="w-4 h-4" />
-                        <span>VIEW PRESENTATION</span>
-                      </button>
-                      <button
-                        onClick={() => showToast("Conference Abstract Archived", "info")}
-                        className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded-sm flex items-center gap-2 shadow-xs"
-                      >
-                        <Icon name="file-text" className="w-4 h-4" />
-                        <span>VIEW ABSTRACT</span>
-                      </button>
-                      <button
-                        onClick={() => showToast("Peer-Reviewed Paper Archived", "info")}
-                        className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded-sm flex items-center gap-2 shadow-xs"
-                      >
-                        <Icon name="book-open" className="w-4 h-4" />
-                        <span>VIEW PAPER</span>
-                      </button>
+                        <div className="flex flex-wrap items-center gap-3 pt-2 font-mono-tag text-xs">
+                          {r.image && (
+                            <button
+                              onClick={() => setLightboxImage({ src: r.image, alt: r.title, caption: `${r.title} · ${r.conference}` })}
+                              className="px-4 py-2 bg-emeraldAccent text-white font-semibold rounded-sm hover:bg-ink flex items-center gap-2 shadow"
+                            >
+                              <Icon name="image" className="w-4 h-4" />
+                              <span>VIEW CERTIFICATE OF APPRECIATION</span>
+                            </button>
+                          )}
+                          <button
+                            onClick={() => showToast("Conference Abstract Archived", "info")}
+                            className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded-sm flex items-center gap-2 shadow-xs"
+                          >
+                            <Icon name="file-text" className="w-4 h-4" />
+                            <span>VIEW ABSTRACT</span>
+                          </button>
+                          <button
+                            onClick={() => showToast("Peer-Reviewed Paper Archived", "info")}
+                            className="px-4 py-2 bg-white border border-ivory-border hover:border-emeraldAccent text-ink rounded-sm flex items-center gap-2 shadow-xs"
+                          >
+                            <Icon name="book-open" className="w-4 h-4" />
+                            <span>VIEW PAPER</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      {r.image && (
+                        <div className="lg:col-span-4">
+                          <div
+                            className="rounded overflow-hidden border border-ivory-border bg-white cursor-pointer group shadow-sm relative"
+                            onClick={() => setLightboxImage({ src: r.image, alt: r.title, caption: `${r.title} · ${r.conference}` })}
+                          >
+                            <img src={r.image} alt={r.title} className="w-full h-56 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <span className="px-3 py-1 bg-white/95 rounded text-xs font-mono-tag font-bold shadow text-emeraldAccent">
+                                CLICK TO ENLARGE CERTIFICATE
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -2706,26 +2768,53 @@
                 {/* 2. Merit Scholarship */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {data.achievements.scholarships.map((ach, aIdx) => (
-                    <div key={ach.id || aIdx} className="p-7 paper-card rounded-sm space-y-4">
-                      <div className="flex items-center justify-between font-mono-tag text-xs text-ink-dim">
-                        <span className="text-emeraldAccent font-bold">{ach.category}</span>
-                        <span>{ach.date}</span>
+                    <div key={ach.id || aIdx} className="p-7 paper-card rounded-sm space-y-4 group flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between font-mono-tag text-xs text-ink-dim mb-2">
+                          <span className="text-emeraldAccent font-bold">{ach.category}</span>
+                          <span>{ach.date}</span>
+                        </div>
+
+                        <h4 className="font-editorial text-2xl text-ink mb-1">
+                          {ach.title}
+                        </h4>
+
+                        <p className="font-mono-tag text-xs text-ink-muted mb-3">
+                          Awarded by: {ach.awardingBody} ({ach.period})
+                        </p>
+
+                        {ach.image && (
+                          <div
+                            className="mb-4 h-52 w-full rounded overflow-hidden border border-ivory-border cursor-pointer group-hover:shadow-md transition-all relative"
+                            onClick={() => setLightboxImage({ src: ach.image, alt: ach.title, caption: `${ach.title} · ${ach.awardingBody}` })}
+                          >
+                            <img src={ach.image} alt={ach.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <span className="px-3 py-1 bg-white/95 rounded text-xs font-mono-tag font-bold shadow text-emeraldAccent">
+                                CLICK TO ZOOM SCHOLARSHIP
+                              </span>
+                            </div>
+                          </div>
+                        )}
+
+                        <p className="text-sm text-ink-muted font-light leading-relaxed">
+                          {ach.recognition}
+                        </p>
                       </div>
 
-                      <h4 className="font-editorial text-2xl text-ink">
-                        {ach.title}
-                      </h4>
-
-                      <p className="font-mono-tag text-xs text-ink-muted">
-                        Awarded by: {ach.awardingBody} ({ach.period})
-                      </p>
-
-                      <p className="text-sm text-ink-muted font-light leading-relaxed">
-                        {ach.recognition}
-                      </p>
-
-                      <div className="pt-3 border-t border-ivory-border font-mono-tag text-[11px] text-ink-dim">
-                        <span>SIGNATORIES: {ach.signatories}</span>
+                      <div className="pt-3 border-t border-ivory-border flex items-center justify-between font-mono-tag text-xs">
+                        <div className="text-[11px] text-ink-dim">
+                          <span>SIGNATORIES: {ach.signatories}</span>
+                        </div>
+                        {ach.image && (
+                          <button
+                            onClick={() => setLightboxImage({ src: ach.image, alt: ach.title, caption: `${ach.title} · ${ach.awardingBody}` })}
+                            className="px-3 py-1 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1 shadow-xs"
+                          >
+                            <Icon name="image" className="w-3.5 h-3.5" />
+                            <span>VIEW CERTIFICATE</span>
+                          </button>
+                        )}
                       </div>
                     </div>
                   ))}
