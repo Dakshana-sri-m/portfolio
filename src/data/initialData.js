@@ -209,9 +209,10 @@ export const INITIAL_PORTFOLIO_DATA = {
       verificationCode: "DoK5HySvEFfwT4QnW",
       userId: "69c60734448ed0424a2a5632",
       focus: "Data Analysis & Forensic Technology",
+      signatories: "Tina McCreery (Chief Human Resources Officer, Deloitte)",
       description: "Completed practical simulation involving real-world forensic data investigations, anomaly pattern recognition, client-ready data communication, and analytical problem-solving.",
       credentialUrl: "https://www.theforage.com/simulations/deloitte/data-analytics",
-      pdfUrl: "",
+      pdfUrl: "assets/certificates/deloitte_data_analytics_certificate.pdf",
       image: ""
     },
     {
@@ -221,9 +222,10 @@ export const INITIAL_PORTFOLIO_DATA = {
       issueDate: "July 5, 2026",
       verificationCode: "10432422",
       focus: "Data Preparation, Formulas, Analytical Worksheets",
+      signatories: "Krishna Kumar (CEO, Simplilearn)",
       description: "Mastered fundamental to intermediate spreadsheet analytics, complex lookup formulas, dynamic pivot modeling, and automated summary reports for business operations.",
       credentialUrl: "https://www.simplilearn.com/skillup-certificate",
-      pdfUrl: "",
+      pdfUrl: "assets/certificates/simplilearn_excel_certificate.pdf",
       image: ""
     },
     {
@@ -231,12 +233,12 @@ export const INITIAL_PORTFOLIO_DATA = {
       title: "Two-Day Entrepreneurship & Venture Building Bootcamp",
       issuer: "Kumaraguru Institutions × River Venture Studios, Singapore",
       issueDate: "February 9–10, 2026",
-      signatories: "Dr. Viveka Kalidasan & Dr. D. Saravanan",
+      signatories: "Dr. Viveka Kalidasan (Founder-CEO, River Ventures) & Dr. D. Saravanan (Director - QA & Special Projects, KI)",
       focus: "Global Venture Ideation, Scalability & Market Validation",
       description: "Intensive venture design sprint covering venture capital evaluation criteria, customer discovery methodologies, unit economics validation, and cross-border commercialization strategies.",
       credentialUrl: "",
       pdfUrl: "",
-      image: ""
+      image: "assets/certificates/river_venture_studios_bootcamp.jpg"
     },
     {
       id: "cert-amypo",
@@ -244,6 +246,7 @@ export const INITIAL_PORTFOLIO_DATA = {
       issuer: "Amypo",
       issueDate: "2026",
       focus: "Analytical Tools, Querying & Visual Analytics",
+      signatories: "Amypo Technical Evaluation Division",
       description: "Hands-on certification in SQL querying, dataset transformation, analytical dashboarding, and multi-dimensional reporting.",
       credentialUrl: "",
       pdfUrl: "",
@@ -683,10 +686,10 @@ export const INITIAL_PORTFOLIO_DATA = {
         awardingBody: "Kumaraguru Institutions / KCLAS",
         date: "March 26, 2026",
         period: "Academic Year 2025–2026",
-        signatories: "Shri Shankar Vanavarayar & Dr. Deepesh",
+        signatories: "Shri Shankar Vanavarayar (President, KI) & Dr. Deepesh (Principal i/c, KCLAS)",
         recognition: "Awarded for outstanding meritorious academic performance, exemplary character, and multi-faceted contribution to the institutional ecosystem during the academic year 2025–2026.",
         category: "Institutional Academic Excellence",
-        image: ""
+        image: "assets/certificates/mahatma_gandhi_merit_scholarship.jpg"
       }
     ],
     research: [
@@ -697,7 +700,9 @@ export const INITIAL_PORTFOLIO_DATA = {
         organizers: "VET Institute of Arts and Science (VETIAS), Thindal, Erode in association with Asia Pacific University of Technology and Innovation (APU), Malaysia",
         date: "August 18, 2026",
         authors: "Dakshana Sri M",
+        signatories: "Dr. V.P. Nallaswamy (Principal, VETIAS), Thiru. S.D. Chandrasekar (Secretary), Convenors",
         abstract: "Network traffic classification plays a pivotal role in automated Quality of Service (QoS) provisioning, intrusion detection, and adaptive bandwidth management. With the exponential adoption of transport layer encryption (TLS 1.3/QUIC), conventional deep packet inspection methods face severe limitations. This paper investigates machine learning classifiers trained on statistical flow-level behavioral signatures. Experimental evaluations demonstrate high classification accuracy across diverse traffic classes while maintaining minimal computational overhead suitable for real-time edge network monitoring.",
+        image: "assets/certificates/iccsam_2026_certificate.jpg",
         presentationUrl: "",
         paperUrl: "",
         abstractUrl: "",
