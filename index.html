@@ -1365,7 +1365,25 @@
       const [data, setData] = useState(() => {
         try {
           const saved = localStorage.getItem("dakshana_portfolio_v2_data");
-          if (saved) return JSON.parse(saved);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            parsed.meta = { ...DEFAULT_DATA.meta, ...parsed.meta };
+            parsed.meta.socials = {
+              ...DEFAULT_DATA.meta.socials,
+              ...parsed.meta.socials,
+              phone: "8870042836",
+              email: "dakshanasrim1406@gmail.com",
+              linkedin: "https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+              github: "https://github.com/Dakshana-sri-m"
+            };
+            parsed.contact = {
+              ...DEFAULT_DATA.contact,
+              ...parsed.contact,
+              directEmail: "dakshanasrim1406@gmail.com",
+              phone: "8870042836"
+            };
+            return parsed;
+          }
         } catch (e) {
           console.warn("Storage read error:", e);
         }
@@ -3253,25 +3271,29 @@
                           <Icon name="phone" className="w-4 h-4" />
                         </div>
                         <div>
-                          <span className="text-[10px] font-mono-tag text-ink-dim block">PHONE / DIRECT CONTACT</span>
-                          <a href={`tel:${data.meta.socials.phone}`} className="font-mono-tag text-xs text-ink font-semibold hover:text-emeraldAccent">
-                            {data.meta.socials.phone}
+                          <span className="text-[10px] font-mono-tag text-ink-dim block font-semibold">PHONE / DIRECT CONTACT</span>
+                          <a
+                            href={`tel:${data.meta?.socials?.phone || '8870042836'}`}
+                            className="font-mono-tag text-sm text-ink font-bold hover:text-emeraldAccent tracking-wide"
+                          >
+                            {data.meta?.socials?.phone || '8870042836'}
                           </a>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => {
-                            navigator.clipboard.writeText(data.meta.socials.phone);
-                            showToast("Phone number copied to clipboard!", "success");
+                            const p = data.meta?.socials?.phone || '8870042836';
+                            navigator.clipboard.writeText(p);
+                            showToast("Phone number 8870042836 copied to clipboard!", "success");
                           }}
-                          className="px-3 py-1 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded hover:bg-ink shadow-xs"
+                          className="px-3.5 py-1.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded hover:bg-ink shadow-xs transition-colors"
                         >
                           COPY
                         </button>
                         <a
-                          href={`tel:${data.meta.socials.phone}`}
-                          className="px-3 py-1 bg-white border border-ivory-border text-ink hover:border-emeraldAccent font-mono-tag text-xs font-semibold rounded shadow-xs"
+                          href={`tel:${data.meta?.socials?.phone || '8870042836'}`}
+                          className="px-3.5 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent font-mono-tag text-xs font-semibold rounded shadow-xs transition-colors"
                         >
                           CALL NOW
                         </a>
