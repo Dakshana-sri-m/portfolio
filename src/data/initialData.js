@@ -125,34 +125,40 @@ export const INITIAL_PORTFOLIO_DATA = {
         chapterNumber: "03",
         label: "CHAPTER 03",
         title: "LEADER",
-        subtitle: "Leadership. Events. People. Entrepreneurship. Community.",
-        description: "Taking on institutional responsibilities: directing flagship venture events, facilitating cohort-faculty harmony, and driving social impact operations.",
+        subtitle: "Leadership. Ecosystem. People. Organizing & Catalyzing Teams.",
+        description: "Taking on institutional leadership responsibilities: directing flagship venture initiatives, organizing cohorts from the ground up, and learning to lead with empathy and operational discipline.",
         initiatives: [
           {
             role: "Director",
             organization: "LEED (Leadership & Entrepreneurship Development)",
+            badge: "VENTURE ECOSYSTEM & MEDIA",
+            learning: "Learned how to design high-impact venture platforms, orchestrate large-scale founder events, and communicate ideas with authentic conviction.",
             highlights: [
-              "Spearheaded flagship E-Summit bringing together founders, investors, and aspiring student innovators",
-              "Organized and executed collegiate Shark Tank pitch competitions",
-              "Hosted and curated the Founder Podcast Series interviewing regional entrepreneurs"
+              "Founder Podcast Series: Curated, hosted, and moderated in-depth discussions with regional startup founders, uncovering early failure loops, market validation, and operational resilience.",
+              "E-Summit: Spearheaded the flagship collegiate entrepreneurship summit connecting founders, angel investors, and hundreds of aspiring student builders.",
+              "Shark Tank Arena: Conceptualized and executed live startup pitch arenas, establishing pitch evaluation scorecards, coordinating jury panels, and mentoring student founders."
             ],
             hasPodcastSoundwave: true
           },
           {
-            role: "Class Representative",
-            organization: "Student Body & Department Cohort",
+            role: "Class Representative (2nd Semester)",
+            organization: "Department Cohort & Student Body",
+            badge: "COHORT LEADERSHIP & OPERATIONS",
+            learning: "Learned that true leadership is the quiet discipline of organizing chaos, listening deeply, and making progress seamless for everyone in the room.",
             highlights: [
-              "Official student-faculty liaison streamlining academic workflows and exam logistics",
-              "Coordinated peer study groups and fostered inclusive cohort collaboration",
-              "Resolved scheduling and administrative friction with empathy and diplomatic clarity"
+              "Organizing & Leading: Stepped forward in 2nd semester to organize class operations, align diverse student perspectives, and lead departmental initiatives.",
+              "Official Student-Faculty Liaison: Streamlined communication between professors and students on curriculum schedules, project submissions, and exam logistics.",
+              "Peer Study Support: Coordinated collaborative peer study circles and resolved administrative and scheduling bottlenecks with empathy and diplomatic clarity."
             ]
           },
           {
             role: "Volunteer & Community Operator",
             organization: "Namadhu Pangu",
+            badge: "SOCIAL IMPACT & OUTREACH",
+            learning: "Gained ground-level appreciation for community dynamics, grassroots mobilization, and collective empathy.",
             highlights: [
-              "Coordinated community outreach programs and social impact ground operations",
-              "Facilitated volunteer engagement across rural empowerment and educational support drives"
+              "Coordinated grassroots community outreach programs and social impact ground operations.",
+              "Mobilized volunteer teams across educational support and rural community empowerment drives."
             ]
           }
         ]
