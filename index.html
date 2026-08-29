@@ -1,0 +1,2768 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dakshana Sri M — Student · Builder · Leader</title>
+  <meta name="description" content="Personal editorial operating space and portfolio of Dakshana Sri M — Data Science × Venture Building × Leadership." />
+
+  <!-- Google Fonts: DM Serif Display, Instrument Serif, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- React 18 & ReactDOM 18 UMD -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+  <!-- Babel Standalone for In-Browser JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              DEFAULT: '#0B0C0E',
+              surface: '#121418',
+              card: '#16181E',
+              subtle: '#1C1F26',
+              border: 'rgba(243, 240, 232, 0.09)'
+            },
+            bone: {
+              DEFAULT: '#F3F0E8',
+              muted: '#A5A39D',
+              dim: '#6D6C67',
+              dark: '#2E2D2B'
+            },
+            chartreuse: {
+              DEFAULT: '#D4F933',
+              glow: 'rgba(212, 249, 51, 0.25)',
+              dim: 'rgba(212, 249, 51, 0.12)',
+              border: 'rgba(212, 249, 51, 0.35)'
+            }
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', '"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          letterSpacing: {
+            widest: '0.2em',
+            tighter: '-0.04em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Grain Overlay & Base Aesthetics */
+    body {
+      background-color: #0B0C0E;
+      color: #F3F0E8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      selection-background-color: #D4F933;
+      selection-color: #0B0C0E;
+    }
+
+    ::selection {
+      background: #D4F933;
+      color: #0B0C0E;
+    }
+
+    /* Custom subtle noise texture */
+    .bg-grain {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* Editorial display serif styling */
+    .font-editorial {
+      font-family: 'DM Serif Display', serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Monospace accent styling */
+    .font-mono-tag {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    /* Subtle Glass Card */
+    .glass-card {
+      background: rgba(22, 24, 30, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(243, 240, 232, 0.08);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(212, 249, 51, 0.28);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0C0E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A2D36;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D4F933;
+    }
+
+    /* Edit Mode Pulsing Ring */
+    .edit-mode-active {
+      outline: 2px dashed rgba(212, 249, 51, 0.6);
+      outline-offset: 3px;
+    }
+
+    .edit-indicator-pulse {
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(212, 249, 51, 0.3); }
+      50% { box-shadow: 0 0 25px rgba(212, 249, 51, 0.7); }
+    }
+
+    /* Smooth transitions respecting reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-bone antialiased selection:bg-chartreuse selection:text-obsidian">
+  <!-- Root React App Target -->
+  <div id="root"></div>
+
+  <!-- React Application Logic Script -->
+  <script type="text/babel">
+    const { useState, useEffect, useRef, useMemo } = React;
+
+    // --- Master Default Data ---
+    const DEFAULT_DATA = {
+      meta: {
+        name: "DAKSHANA SRI M",
+        role: "Data Science × Venture Building × Leadership",
+        tagline: "I'M BUILDING MY WAY FORWARD.",
+        subtagline: "From student to builder to leader — exploring data, businesses, technology and the people behind them.",
+        location: "Coimbatore / Tamil Nadu, India",
+        portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80",
+        avatarAlt: "Dakshana Sri M Editorial Portrait",
+        socials: {
+          email: "dakshanasri.m@example.com",
+          linkedin: "https://linkedin.com/in/",
+          github: "https://github.com/",
+          kaggle: "https://kaggle.com/",
+          leetcode: "https://leetcode.com/"
+        }
+      },
+      liveStatus: {
+        currently: "ProtoSem · Week 1",
+        learning: "Data Science + Advanced Computing",
+        building: "Ideas → Experiments → Prototypes",
+        preparing: "PG Entrance + Research",
+        thinking: "The next chapter after graduation & venture scale"
+      },
+      story: {
+        title: "WHERE I COME FROM SHAPES WHAT I BUILD.",
+        subtitle: "An editorial timeline of curiosity, ground-level business exposure, and the deliberate evolution into a builder.",
+        chapters: [
+          {
+            id: "ch-student",
+            stage: "STUDENT",
+            title: "The Foundations of Curiosity",
+            period: "Foundation Phase",
+            content: "Starting in computer applications and computational foundations. Rather than stopping at textbook exercises, curiosity pushed towards understanding how raw data converts into decisions, and how computation can model complex real-world dynamics.",
+            takeaway: "Curiosity before tools; fundamentals before frameworks.",
+            photo: ""
+          },
+          {
+            id: "ch-datascience",
+            stage: "DATA SCIENCE",
+            title: "From Data Analysis to Systems Intelligence",
+            period: "Analytical Phase",
+            content: "Deepening technical capabilities across Python, SQL, statistical modeling, machine learning, and packet-flow traffic classification. Discovering that data is not merely numbers on a dashboard, but the digital footprint of human intent and machine behavior.",
+            takeaway: "Finding signal in noisy environments.",
+            photo: ""
+          },
+          {
+            id: "ch-business",
+            stage: "BUSINESS EXPOSURE",
+            title: "Roots in Enterprise & Ground-Truth Operations",
+            period: "Real-World Grounding",
+            content: "Witnessing real-world commercial enterprise, manufacturing by-products, and export mechanics firsthand. Learning that technical solutions mean nothing unless they survive the realities of cash flow, supply chains, compliance, and client trust.",
+            takeaway: "Building with an instinct for viability and ground truth.",
+            photo: ""
+          },
+          {
+            id: "ch-builder",
+            stage: "BUILDER",
+            title: "ProtoSem & The Discipline of Shipping",
+            period: "Active Sprint Phase",
+            content: "Transitioning from theoretical assignments to disciplined rapid prototyping in ProtoSem: 20 weeks, 1 core idea, daily sprints from discovery to architectural validation and live demos. Building things that can be tested, critiqued, and iterated.",
+            takeaway: "Execution is the only true validator.",
+            photo: ""
+          },
+          {
+            id: "ch-leader",
+            stage: "LEADER",
+            title: "Convening People, Catalyzing Movements",
+            period: "Leadership & Community",
+            content: "Directing flagship entrepreneurship initiatives at LEED (E-Summit, Shark Tank, Founder Podcast Series), acting as the bridge between cohort and faculty as Class Representative, and volunteering with Namadhu Pangu for social impact operations.",
+            takeaway: "Leadership is about creating clarity and removing friction for others.",
+            photo: ""
+          },
+          {
+            id: "ch-next",
+            stage: "WHAT'S NEXT?",
+            title: "Venture Building & Postgraduate Research",
+            period: "Horizon",
+            content: "Preparing for advanced postgraduate research and venture-scale engineering. Focusing on intersections between high-throughput data systems, intelligent automation, and sustainable industrial by-product monetization.",
+            takeaway: "Continuously widening the scope of impact.",
+            photo: ""
+          }
+        ],
+        fatherMentorship: {
+          title: "THE PEOPLE WHO SHAPED HOW I THINK",
+          subtitle: "On Family Heritage, Enterprise & First-Principles Work Ethic",
+          content: "Growing up around my father's business gave me an unfiltered masterclass in resilience, customer relationships, and operational reality. Long before I studied machine learning algorithms or venture ideation frameworks, I watched how a business navigates uncertainty, manages suppliers, and creates enduring value. That background is why I don't build software in a vacuum — I build with an instinct for practical economics, human trust, and long-term viability.",
+          quote: "Understanding the problem at the ground level is worth a thousand assumptions.",
+          photo: ""
+        }
+      },
+      build: [
+        {
+          id: "b-01",
+          category: "BUILDING",
+          title: "Intelligent Network Traffic Type Classifier",
+          idea: "A lightweight machine learning engine for real-time packet-flow anomaly detection and protocol classification.",
+          why: "Traditional deep packet inspection is compute-heavy and breaks under encrypted flows; statistical flow features enable privacy-preserving, rapid threat categorization.",
+          experiment: "Trained tree-based and neural classifiers on high-dimensional flow duration, packet length variance, and inter-arrival times.",
+          status: "Conference Paper Accepted & Presented @ ICCSAM 2026",
+          next: "Packaging into an edge-deployable microservice with real-time PCAP streaming capabilities.",
+          date: "August 2026",
+          tag: "ML / Network Security",
+          link: "#work",
+          image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "b-02",
+          category: "BUILDING",
+          title: "ProtoSem Sprint: 20-Week Prototype Engine",
+          idea: "A structured, intensive 20-week product prototyping cycle spanning problem validation to architecture, build, and user testing.",
+          why: "Bridging the gap between academic theory and venture-ready technology requires daily execution discipline.",
+          experiment: "Completed Week 0 (Foundations) and Week 1 (Discovery & Needs Analysis). Daily logs across discovery, architecture, and validation.",
+          status: "Week 01 Completed · Week 02 In Progress",
+          next: "Refining product requirement documentation and technical architecture wireframes.",
+          date: "Aug 2026",
+          tag: "ProtoSem / Venture",
+          link: "#protosem",
+          image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "b-03",
+          category: "EXPLORING",
+          title: "Circular Economy: Agro-Industrial By-Product Monetization",
+          idea: "Mapping supply chain waste streams and processing by-products to discover high-value upcycling markets.",
+          why: "Processing industries discard valuable secondary materials due to lack of market transparency and B2B matchmaking.",
+          experiment: "Secondary research into volume flows, moisture preservation requirements, and industrial buyer criteria.",
+          status: "Feasibility & Market Sizing",
+          next: "Conducting structured interviews with regional processing unit operators.",
+          date: "Ongoing",
+          tag: "Venture / Sustainability",
+          link: "#work",
+          image: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "b-04",
+          category: "EXPLORING",
+          title: "Cross-Border B2B Export Intelligence Playbook",
+          idea: "Synthesizing trade compliance, tariff structures, and logistics roadmaps for regional manufacturing exports.",
+          why: "Small-to-mid manufacturing enterprises face high discovery barriers when attempting direct cross-border trade.",
+          experiment: "Cataloging export documentation workflows and analyzing port logistics benchmarks.",
+          status: "Playbook Draft in Progress",
+          next: "Validating tariff estimation checklists with export consultants.",
+          date: "2026",
+          tag: "Trade / Supply Chain",
+          link: "#work",
+          image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80"
+        },
+        {
+          id: "b-05",
+          category: "PARKED",
+          title: "Campus Peer Mentorship Micro-Network",
+          idea: "Algorithmic matchmaking for undergraduate peer study pods based on complementary skill gaps.",
+          why: "Informal peer tutoring improves retention but suffers from coordination friction.",
+          experiment: "Pilot manual matching conducted across 2 cohorts during semester exams.",
+          status: "Parked after initial pilot validation",
+          next: "Will revisit if automated scheduling bots can be integrated with institutional LMS.",
+          date: "Early 2026",
+          tag: "EdTech / Community",
+          link: "#",
+          image: ""
+        }
+      ],
+      projects: [
+        {
+          id: "traffic-ml",
+          title: "Network Traffic Type Categorization & Threat Anomaly Detection",
+          badge: "RESEARCH & MACHINE LEARNING",
+          summary: "Machine learning models analyzing network traffic flow statistics to accurately categorize traffic types and detect anomalous packets without decrypting payload content.",
+          question: "Can network traffic types and emerging threat anomalies be accurately identified solely through statistical flow attributes (packet intervals, size distributions, burst ratios) without payload inspection?",
+          problem: "Payload-based deep packet inspection (DPI) introduces massive computational latency and violates data privacy standards, especially as encryption protocols (TLS 1.3) obscure header payloads. Network defenders need fast, privacy-preserving classification.",
+          approach: "Extracted directional flow metrics, inter-arrival time standard deviations, and protocol burst parameters. Preprocessed and normalized multi-class traffic distributions, benchmarked Random Forests, Gradient Boosted Trees, and neural classifiers against realistic network datasets.",
+          tools: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Network Flow Analysis", "Matplotlib", "Seaborn"],
+          result: "Demonstrated high multi-class precision in distinguishing streaming, bulk transfer, interactive, and anomalous packet sequences. The findings formed the basis of an international peer-reviewed paper presented at ICCSAM 2026.",
+          learnings: "Feature engineering on temporal flow variance carries higher discriminatory signal than raw packet volume; handling class imbalance is critical for rare anomaly detection.",
+          nextStep: "Exploring real-time lightweight inference pipelines deployable on resource-constrained gateway hardware.",
+          links: {
+            paper: "#proof",
+            presentation: "#proof",
+            github: "",
+            demo: "",
+            dataset: ""
+          },
+          image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          id: "export-expansion",
+          title: "Family Enterprise Global Export Expansion Roadmap",
+          badge: "BUSINESS STRATEGY & LOGISTICS",
+          summary: "Strategic market analysis and cross-border supply chain assessment exploring scalable B2B export roadmaps for regional manufacturing operations.",
+          question: "How can a regionally grounded manufacturing enterprise systematically transition to direct international B2B export markets while managing working capital risk?",
+          problem: "Traditional manufacturing enterprises often rely on intermediaries who capture substantial margins, while direct export requires mastering complex trade compliance, incoterms, quality certifications, and maritime freight scheduling.",
+          approach: "Conducted structured target market segmentation across Southeast Asia and Middle Eastern corridors. Mapped end-to-end export documentation workflows (Letter of Credit, Certificate of Origin, Phytosanitary / Quality clearances) and calculated landed cost models under varying shipping routes.",
+          tools: ["Trade Analytics", "Supply Chain Modeling", "MS Excel Advanced Worksheets", "Financial Modeling", "Market Research"],
+          result: "Synthesized a structured, repeatable market-entry evaluation framework and risk matrix for international buyer engagement.",
+          learnings: "Export success is 30% product quality and 70% operational discipline in logistics coordination, customs compliance, and contract terms.",
+          nextStep: "Developing standardized buyer evaluation scorecard templates for upcoming trade delegation inquiries.",
+          links: {
+            paper: "",
+            presentation: "",
+            github: "",
+            demo: "",
+            dataset: ""
+          },
+          image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
+        },
+        {
+          id: "circular-economy",
+          title: "Circular Economy & Industrial By-Product Monetization",
+          badge: "VENTURE FEASIBILITY & SUSTAINABILITY",
+          summary: "Investigating commercial upcycling pathways and B2B secondary material brokerage for agricultural and industrial processing waste streams.",
+          question: "How can industrial processing residues be systematically characterized, preserved, and routed to high-value industrial buyers rather than disposed of as low-grade biomass?",
+          problem: "Processing residues often retain high chemical and structural value, but decentralized generation and rapid spoilage cause millions of metric tons of valuable material to be underutilized or dumped.",
+          approach: "Surveyed processing volume dynamics, moisture control methods, and industrial application verticals (biocomposites, specialized soil conditioning, industrial bio-energy). Modeled collection logistics and aggregation hub feasibility.",
+          tools: ["Venture Sizing", "Process Economics", "Life Cycle Assessment Principles", "Secondary Market Research"],
+          result: "Drafted a scalable aggregation and quality-grading blueprint targeting regional processing clusters.",
+          learnings: "Logistical density and shelf-life stabilization dictate the economic boundary of by-product upcycling more than raw chemical yield.",
+          nextStep: "Refining pilot aggregation cost models with local processing operators.",
+          links: {
+            paper: "",
+            presentation: "",
+            github: "",
+            demo: "",
+            dataset: ""
+          },
+          image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80"
+        }
+      ],
+      protosem: {
+        title: "PROTOSEM WORKSPACE",
+        subtitle: "20 WEEKS · ONE CORE IDEA · ONE DISCIPLINED PROTOTYPE",
+        description: "An intensive full-time immersion into venture building, systems architecture, rapid experimentation, and hands-on prototype delivery. Dakshana has completed Week 0 and Week 1; future weeks represent the disciplined 20-week trajectory.",
+        totalWeeks: 20,
+        currentWeekIndex: 1,
+        weeks: [
+          {
+            weekNumber: 0,
+            label: "W00",
+            title: "Week 0: Foundation, Tooling & Venture Orientation",
+            status: "COMPLETED",
+            theme: "Mindset Reset & Problem Space Identification",
+            days: [
+              {
+                dayNumber: 1,
+                title: "Day 01 — Discovery & Orientation",
+                tag: "DISCOVERY",
+                whatIDid: "Onboarding into ProtoSem venture methodology. Setting up technical development environments, repository structures, and daily sprint tracking protocols.",
+                whatILearned: "Velocity in prototyping stems from clean setup and rapid hypothesis definition rather than over-engineering upfront.",
+                reflection: "Stepping out of the academic mindset into builder discipline.",
+                blog: "Day 0 marked the transition from passive learning to proactive product ownership.",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 2,
+                title: "Day 02 — Problem Decomposition",
+                tag: "ARCHITECTURE",
+                whatIDid: "Deconstructed initial problem statements across industrial logistics, data analysis bottlenecks, and automation opportunities. Mapped stakeholder pain points.",
+                whatILearned: "A problem well-stated is a problem half-solved. Avoid jumping into code before identifying the core user tension.",
+                reflection: "Separating genuine user pain from artificial technology features.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 3,
+                title: "Day 03 — Technical Exploration",
+                tag: "BUILD",
+                whatIDid: "Benchmarked candidate data pipelines, compute runtimes, and prototyping frameworks. Built early test scripts for data ingestion and verification.",
+                whatILearned: "Early friction in tooling multiplies later. Choose robust, well-documented foundational packages.",
+                reflection: "Simplicity in tech stacks beats novelty.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 4,
+                title: "Day 04 — Peer Critique & Validation",
+                tag: "VALIDATION",
+                whatIDid: "Participated in peer feedback circles. Presented problem hypotheses to mentors and synthesized constructive critique on project scope.",
+                whatILearned: "Constructive pushback is the highest-value data you can receive early in a build.",
+                reflection: "Detaching ego from ideas makes product evolution 10x faster.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 5,
+                title: "Day 05 — Week 0 Synthesis & Milestone Review",
+                tag: "DEMO",
+                whatIDid: "Compiled Week 0 retrospectives, finalized project milestone targets for the 20-week arc, and locked in sprint commitments for Week 1.",
+                whatILearned: "Weekly synthesis creates momentum and accountability across long project horizons.",
+                reflection: "The journey is framed; now it's time to dig into deep research.",
+                blog: "Retrospective: Establishing the operating cadence for the coming months.",
+                image: "",
+                link: ""
+              }
+            ]
+          },
+          {
+            weekNumber: 1,
+            label: "W01",
+            title: "Week 1: Needs Analysis & Deep Problem Formulation",
+            status: "COMPLETED",
+            theme: "User Research, Requirements & Data Pipeline Scoping",
+            days: [
+              {
+                dayNumber: 1,
+                title: "Day 01 — Discovery: User Persona & Workflow Mapping",
+                tag: "DISCOVERY",
+                whatIDid: "Interviewed target users and mapped standard operational workflows. Identified critical data input anomalies and latency bottlenecks in existing manual procedures.",
+                whatILearned: "Users often compensate for software flaws with manual spreadsheets; the hidden opportunity lies in those spreadsheet workarounds.",
+                reflection: "Real requirements are found in what users do, not just what they say.",
+                blog: "Deep Dive: Mapping user workarounds to unveil core product value.",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 2,
+                title: "Day 02 — Architecture: System Schema & Data Ingestion",
+                tag: "ARCHITECTURE",
+                whatIDid: "Designed the initial entity-relationship schema and high-level architectural diagram for data ingestion, filtering, and model inference services.",
+                whatILearned: "Designing schemas with clear boundary separation prevents spaghetti interdependencies as features expand.",
+                reflection: "Drafting the skeleton before adding the flesh.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 3,
+                title: "Day 03 — Build: Data Parsing & Cleaning Pipeline",
+                tag: "BUILD",
+                whatIDid: "Implemented robust data transformation modules in Python. Handled null values, categorical encodings, and temporal normalization across test datasets.",
+                whatILearned: "Clean data pipeline code is 80% of model reliability.",
+                reflection: "Enjoying the rhythmic flow of functional data transformations.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 4,
+                title: "Day 04 — Validation: Baseline Metric Formulation",
+                tag: "VALIDATION",
+                whatIDid: "Formulated benchmark evaluation metrics (Precision, Recall, F1, Latency per sample). Ran sanity tests on baseline models.",
+                whatILearned: "Always establish a naive baseline first before implementing complex models.",
+                reflection: "Measuring against clear thresholds keeps progress honest.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 5,
+                title: "Day 05 — Demo: Week 1 Sprint Review & Mentor Feedback",
+                tag: "DEMO",
+                whatIDid: "Presented Week 1 sprint outputs, architectural diagrams, and baseline pipeline results to ProtoSem mentors. Documented action items for Week 2.",
+                whatILearned: "Crisp communication during sprint demos builds trust and delivers actionable mentor feedback.",
+                reflection: "Solid footing established. Ready to move into deep architectural refinement for Week 2.",
+                blog: "Sprint 01 Review: Baseline pipelines verified.",
+                image: "",
+                link: ""
+              }
+            ]
+          },
+          {
+            weekNumber: 2,
+            label: "W02",
+            title: "Week 2: Advanced Feature Engineering & Pipeline Structuring",
+            status: "IN_PROGRESS",
+            theme: "Feature Extraction & Schema Validation",
+            days: [
+              {
+                dayNumber: 1,
+                title: "Day 01 — Discovery: Feature Correlation Analysis",
+                tag: "DISCOVERY",
+                whatIDid: "Analyzing covariance and multicollinearity across statistical flow attributes.",
+                whatILearned: "Identifying redundant feature subsets to optimize inference speed.",
+                reflection: "High dimensionality without variance filtering slows down training.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 2,
+                title: "Day 02 — Architecture: Modular Pipeline Design",
+                tag: "ARCHITECTURE",
+                whatIDid: "Refactoring ingestion and transformation modules into loosely coupled classes.",
+                whatILearned: "Modular components enable rapid unit testing.",
+                reflection: "Writing code for the future maintainer.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 3,
+                title: "Day 03 — Build: Automated Transformation Scripts",
+                tag: "BUILD",
+                whatIDid: "Building automated data cleaning and scaling pipelines with unit test coverage.",
+                whatILearned: "Automating validation saves countless hours of manual debugging.",
+                reflection: "Building dependable scaffolding.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 4,
+                title: "Day 04 — Validation: Cross-Validation Benchmarks",
+                tag: "VALIDATION",
+                whatIDid: "Executing k-fold cross validation on engineered feature sets.",
+                whatILearned: "Preventing data leakage across train-test splits.",
+                reflection: "Rigorous methodology is the only defense against false confidence.",
+                blog: "",
+                image: "",
+                link: ""
+              },
+              {
+                dayNumber: 5,
+                title: "Day 05 — Demo: Sprint 2 Code Review & Progress Check",
+                tag: "DEMO",
+                whatIDid: "Reviewing Week 2 deliverables and preparing for model selection in Week 3.",
+                whatILearned: "Continuous iteration maintains steady velocity.",
+                reflection: "Gaining momentum with each completed sprint.",
+                blog: "",
+                image: "",
+                link: ""
+              }
+            ]
+          }
+        ]
+      },
+      proof: {
+        certifications: [
+          {
+            id: "c-01",
+            title: "Data Analytics Job Simulation",
+            issuer: "Deloitte",
+            platform: "Forage",
+            issueDate: "March 28, 2026",
+            verificationCode: "DoK5HySvEFfwT4QnW",
+            userId: "69c60734448ed0424a2a5632",
+            focus: "Data Analysis & Forensic Technology",
+            description: "Completed practical simulation involving real-world forensic data investigations, anomaly pattern recognition, client-ready data communication, and analytical problem-solving.",
+            credentialUrl: "https://www.theforage.com/simulations/deloitte/data-analytics",
+            pdfUrl: "",
+            image: ""
+          },
+          {
+            id: "c-02",
+            title: "Introduction to MS Excel",
+            issuer: "Simplilearn SkillUp",
+            platform: "Powered by Microsoft",
+            issueDate: "July 5, 2026",
+            verificationCode: "10432422",
+            focus: "Data Preparation, Formulas & Analytical Worksheets",
+            description: "Mastered fundamental to intermediate spreadsheet analytics, complex lookup formulas, dynamic pivot modeling, and automated summary reports for business operations.",
+            credentialUrl: "https://www.simplilearn.com/skillup-certificate",
+            pdfUrl: "",
+            image: ""
+          },
+          {
+            id: "c-03",
+            title: "Two-Day Entrepreneurship & Venture Building Bootcamp",
+            issuer: "Kumaraguru Institutions & River Venture Studios, Singapore",
+            platform: "Executive Venture Program",
+            issueDate: "February 9–10, 2026",
+            signatories: "Dr. Viveka Kalidasan & Dr. D. Saravanan",
+            focus: "Global Venture Ideation, Scalability & Market Validation",
+            description: "Intensive venture design sprint covering venture capital evaluation criteria, customer discovery methodologies, unit economics validation, and cross-border commercialization strategies.",
+            credentialUrl: "",
+            pdfUrl: "",
+            image: ""
+          },
+          {
+            id: "c-04",
+            title: "Data Analytical Tool Certification",
+            issuer: "Amypo",
+            platform: "Amypo Technical Assessment",
+            issueDate: "2026",
+            focus: "Analytical Tools, Querying & Visual Analytics",
+            description: "Hands-on certification in SQL querying, dataset transformation, analytical dashboarding, and multi-dimensional reporting.",
+            credentialUrl: "",
+            pdfUrl: "",
+            image: ""
+          }
+        ],
+        achievements: [
+          {
+            id: "a-01",
+            title: "Mahatma Gandhi Merit Scholarship",
+            awardingBody: "Kumaraguru Institutions / KCLAS",
+            date: "March 26, 2026",
+            period: "Academic Year 2025–2026",
+            signatories: "Shri Shankar Vanavarayar & Dr. Deepesh",
+            recognition: "Awarded for outstanding meritorious academic performance, exemplary character, and multi-faceted contribution to the institutional ecosystem during the academic year 2025–2026.",
+            category: "Institutional Academic Excellence",
+            image: ""
+          }
+        ],
+        research: [
+          {
+            id: "r-01",
+            title: "Network Traffic Type Categorization Using Machine Learning",
+            conference: "3rd International Conference on Computational Sciences and Applied Mathematics (ICCSAM 2026)",
+            organizers: "VET Institute of Arts and Science (VETIAS), Thindal, Erode in association with Asia Pacific University of Technology and Innovation (APU), Malaysia",
+            date: "August 18, 2026",
+            authors: "Dakshana Sri M",
+            abstract: "Network traffic classification plays a pivotal role in automated Quality of Service (QoS) provisioning, intrusion detection, and adaptive bandwidth management. With the exponential adoption of transport layer encryption (TLS 1.3/QUIC), conventional deep packet inspection methods face severe limitations. This paper investigates machine learning classifiers trained on statistical flow-level behavioral signatures. Experimental evaluations demonstrate high classification accuracy across diverse traffic classes while maintaining minimal computational overhead suitable for real-time edge network monitoring.",
+            presentationUrl: "",
+            paperUrl: "",
+            abstractUrl: "",
+            status: "Presented & Peer-Reviewed"
+          }
+        ]
+      },
+      capabilities: {
+        title: "CAPABILITY, NOT CHECKBOXES.",
+        subtitle: "A dynamic capability landscape built through practical execution, real-world ventures, and continuous experimentation.",
+        clusters: [
+          {
+            category: "COMPUTE",
+            description: "Algorithmic thinking & programming foundations",
+            skills: ["Python", "SQL", "Machine Learning", "Algorithmic Logic", "Data Structures"]
+          },
+          {
+            category: "ANALYZE",
+            description: "Statistical modeling & pattern discovery",
+            skills: ["Statistical Modeling", "Data Analytics", "Network Traffic Analysis", "Forensic Technology", "Feature Engineering"]
+          },
+          {
+            category: "VISUALIZE",
+            description: "Translating data into actionable dashboards",
+            skills: ["MS Excel (Advanced)", "Power BI", "Tableau", "BigQuery", "Exploratory Data Analysis"]
+          },
+          {
+            category: "BUILD",
+            description: "Product prototyping & rapid validation",
+            skills: ["Rapid Prototyping", "Venture Building", "Sprint Execution (ProtoSem)", "System Architecture", "Experimentation"]
+          },
+          {
+            category: "LEAD",
+            description: "Ecosystem orchestration & strategic initiatives",
+            skills: ["Strategic Venture Incubation", "Event Logistics", "Pitch Evaluation", "Live Moderation", "Podcasting & Media"]
+          },
+          {
+            category: "CONNECT",
+            description: "Human empathy & stakeholder coordination",
+            skills: ["Conflict Resolution", "Faculty-Student Liaison", "Cross-Functional Coordination", "Social Empathy", "Cohort Management"]
+          }
+        ]
+      },
+      growth: {
+        title: "FROM STUDENT → BUILDER → LEADER",
+        subtitle: "Three intentional chapters defining my journey, mindset, and future trajectory.",
+        chapters: [
+          {
+            chapterNumber: "01",
+            label: "CHAPTER 01",
+            title: "STUDENT",
+            subtitle: "Learning, experimenting and discovering direction.",
+            description: "Mastering the fundamentals of computer applications, mathematical logic, and data analysis. Moving beyond syllabus boundaries by questioning how computational models operate behind the scenes.",
+            highlights: [
+              "Rigorous academic focus recognized by the Mahatma Gandhi Merit Scholarship",
+              "Deep immersion in Python, SQL, and data analytics tools",
+              "Independent exploration of machine learning and network packet analysis"
+            ]
+          },
+          {
+            chapterNumber: "02",
+            label: "CHAPTER 02",
+            title: "BUILDER",
+            subtitle: "Projects, ProtoSem, research and business exploration.",
+            description: "Translating theoretical understanding into tangible artifacts: presenting peer-reviewed research at international conferences, diving into 20 weeks of ProtoSem prototyping, and exploring circular economy business models.",
+            highlights: [
+              "Authored & presented international conference paper at ICCSAM 2026",
+              "ProtoSem 20-week venture prototyping immersion (Week 0 & Week 1 completed)",
+              "Formulated feasibility roadmaps for agricultural by-product upcycling & global B2B exports"
+            ]
+          },
+          {
+            chapterNumber: "03",
+            label: "CHAPTER 03",
+            title: "LEADER",
+            subtitle: "Leadership, events, entrepreneurship and community work.",
+            description: "Taking on institutional responsibilities: directing flagship venture events, facilitating cohort-faculty harmony, and driving social impact operations.",
+            initiatives: [
+              {
+                role: "Director",
+                organization: "LEED (Leadership & Entrepreneurship Development)",
+                highlights: [
+                  "Spearheaded flagship E-Summit bringing together founders, investors, and aspiring student innovators",
+                  "Organized and executed collegiate Shark Tank pitch competitions",
+                  "Hosted and curated the Founder Podcast Series interviewing regional entrepreneurs"
+                ]
+              },
+              {
+                role: "Class Representative",
+                organization: "Student Body & Department Cohort",
+                highlights: [
+                  "Official student-faculty liaison streamlining academic workflows and exam logistics",
+                  "Coordinated peer study groups and fostered inclusive cohort collaboration",
+                  "Resolved scheduling and administrative friction with empathy and diplomatic clarity"
+                ]
+              },
+              {
+                role: "Volunteer & Community Operator",
+                organization: "Namadhu Pangu",
+                highlights: [
+                  "Coordinated community outreach programs and social impact ground operations",
+                  "Facilitated volunteer engagement across rural empowerment and educational support drives"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      personality: {
+        type: "ENFJ",
+        typeName: "Protagonist",
+        tagline: "The Collaborative Catalyst & Purpose-Driven Operator",
+        scores: {
+          extraverted: "54%",
+          intuitive: "52%",
+          feeling: "57%",
+          judging: "51%",
+          turbulent: "51%"
+        },
+        traits: [
+          {
+            label: "PEOPLE-FIRST",
+            desc: "Empathetic communication, active listener, brings out the best in team members."
+          },
+          {
+            label: "IDEA-DRIVEN",
+            desc: "Excited by possibilities, seeks conceptual connections across disparate domains."
+          },
+          {
+            label: "COLLABORATIVE",
+            desc: "Believes the highest-performing teams operate on shared trust and radical clarity."
+          },
+          {
+            label: "PURPOSE-ORIENTED",
+            desc: "Builds technology and ventures anchored to real societal and commercial utility."
+          },
+          {
+            label: "ALWAYS REFINING",
+            desc: "Iterates with humble curiosity — treats feedback as essential engineering input."
+          }
+        ],
+        image: ""
+      },
+      now: {
+        title: "RIGHT NOW",
+        subtitle: "A live operational snapshot of current focus areas, active learning, and near-term horizons.",
+        items: [
+          {
+            badge: "ACTIVE IMMERSION",
+            label: "PROTOSEM",
+            detail: "Week 01 Completed · Transitioning into Week 02 sprint for rapid venture prototyping and feature pipeline construction."
+          },
+          {
+            badge: "TECHNICAL DEPTH",
+            label: "LEARNING",
+            detail: "Data Science, statistical modeling, advanced computing principles, and high-throughput data pipelines."
+          },
+          {
+            badge: "VENTURE EXPERIMENTS",
+            label: "EXPLORING",
+            detail: "Technology + Business intersection, circular economy by-product utilization, and cross-border trade logistics."
+          },
+          {
+            badge: "ACADEMIC HORIZON",
+            label: "PREPARING",
+            detail: "PG Entrance examinations and computational research proposals."
+          },
+          {
+            badge: "STRATEGIC VISION",
+            label: "THINKING ABOUT",
+            detail: "Designing scalable operating frameworks that fuse deep technical data analysis with hands-on venture leadership."
+          }
+        ]
+      },
+      contact: {
+        headline: "LET'S BUILD SOMETHING WORTH TALKING ABOUT.",
+        subheadline: "Whether you're exploring research collaborations, discussing venture prototypes, or sharing a ground-level business problem — my door is open.",
+        directEmail: "dakshanasri.m@example.com",
+        availability: "Open to Research Opportunities, Prototyping Collaborations & Mentorship",
+        city: "Coimbatore, Tamil Nadu, India"
+      }
+    };
+
+    // --- Lucide Icon Helper ---
+    function Icon({ name, className = "w-4 h-4", ...props }) {
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, [name]);
+      return <i data-lucide={name} className={`inline-block ${className}`} {...props}></i>;
+    }
+
+    // --- Main Portfolio App ---
+    function App() {
+      // Data State with LocalStorage
+      const [data, setData] = useState(() => {
+        try {
+          const saved = localStorage.getItem("dakshana_portfolio_data");
+          if (saved) {
+            return JSON.parse(saved);
+          }
+        } catch (e) {
+          console.warn("Could not load from localStorage:", e);
+        }
+        return DEFAULT_DATA;
+      });
+
+      // Edit Mode State
+      const [editMode, setEditMode] = useState(false);
+      const [activeSection, setActiveSection] = useState("home");
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+      const [toast, setToast] = useState(null);
+
+      // Selected Case Study for Deep-Dive Modal
+      const [selectedProject, setSelectedProject] = useState(null);
+      // Selected ProtoSem Week
+      const [selectedWeekIndex, setSelectedWeekIndex] = useState(1);
+      // Selected ProtoSem Day
+      const [selectedDayIndex, setSelectedDayIndex] = useState(0);
+
+      // Modal states for adding/editing items
+      const [editingModal, setEditingModal] = useState(null); // { type: 'idea'|'project'|'cert'|'meta', item: ... }
+
+      // History for Undo
+      const [history, setHistory] = useState([]);
+
+      // Auto-save to LocalStorage
+      const updateData = (newDataOrUpdater) => {
+        setData(prev => {
+          const updated = typeof newDataOrUpdater === 'function' ? newDataOrUpdater(prev) : newDataOrUpdater;
+          setHistory(h => [...h.slice(-10), prev]);
+          try {
+            localStorage.setItem("dakshana_portfolio_data", JSON.stringify(updated));
+          } catch (err) {
+            console.error("Storage error:", err);
+          }
+          return updated;
+        });
+      };
+
+      const showToast = (msg, type = 'info') => {
+        setToast({ msg, type, id: Date.now() });
+        setTimeout(() => setToast(null), 3500);
+      };
+
+      const handleUndo = () => {
+        if (history.length > 0) {
+          const last = history[history.length - 1];
+          setHistory(h => h.slice(0, -1));
+          setData(last);
+          localStorage.setItem("dakshana_portfolio_data", JSON.stringify(last));
+          showToast("Reverted to previous change", "info");
+        } else {
+          showToast("No further undo history", "info");
+        }
+      };
+
+      const handleReset = () => {
+        if (confirm("Reset portfolio content to original default data? All custom edits will be restored.")) {
+          setData(DEFAULT_DATA);
+          localStorage.removeItem("dakshana_portfolio_data");
+          showToast("Portfolio data reset to default template", "info");
+        }
+      };
+
+      const handleExport = () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+        const downloadAnchor = document.createElement("a");
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `dakshana_portfolio_backup_${new Date().toISOString().slice(0,10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+        showToast("Exported portfolio JSON data successfully!", "success");
+      };
+
+      const handleImport = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const parsed = JSON.parse(event.target.result);
+            updateData(parsed);
+            showToast("Custom portfolio data imported successfully!", "success");
+          } catch (err) {
+            showToast("Invalid JSON file format", "error");
+          }
+        };
+        reader.readAsText(file);
+      };
+
+      // Inline field update helper
+      const updateField = (path, value) => {
+        updateData(prev => {
+          const clone = JSON.parse(JSON.stringify(prev));
+          const keys = path.split('.');
+          let curr = clone;
+          for (let i = 0; i < keys.length - 1; i++) {
+            curr = curr[keys[i]];
+          }
+          curr[keys[keys.length - 1]] = value;
+          return clone;
+        });
+      };
+
+      // Track active nav section on scroll
+      useEffect(() => {
+        const handleScroll = () => {
+          const sections = ['home', 'story', 'build', 'work', 'protosem', 'proof', 'growth', 'now', 'contact'];
+          const scrollPosition = window.scrollY + 200;
+          for (const section of sections) {
+            const el = document.getElementById(section);
+            if (el) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                setActiveSection(section);
+                break;
+              }
+            }
+          }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      // Trigger Lucide on render
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      });
+
+      // Safe weeks list
+      const weeks = data.protosem?.weeks || [];
+      const currentWeek = weeks[selectedWeekIndex] || weeks[0] || { days: [] };
+      const currentDay = currentWeek.days?.[selectedDayIndex] || currentWeek.days?.[0] || {};
+
+      return (
+        <div className="min-h-screen bg-obsidian text-bone font-sans bg-grain relative selection:bg-chartreuse selection:text-obsidian pb-24">
+          
+          {/* Toast Notification */}
+          {toast && (
+            <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-md bg-obsidian-surface border border-chartreuse/40 text-bone shadow-2xl text-sm font-mono-tag animate-bounce">
+              <span className="w-2 h-2 rounded-full bg-chartreuse animate-ping"></span>
+              <span>{toast.msg}</span>
+            </div>
+          )}
+
+          {/* Sticky Editorial Navigation */}
+          <header className="sticky top-0 z-40 w-full border-b border-obsidian-border bg-obsidian/80 backdrop-blur-md transition-all duration-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+              
+              {/* Monogram / Brand */}
+              <a href="#home" className="group flex items-center gap-3">
+                <div className="w-9 h-9 rounded-sm border border-bone/20 flex items-center justify-center font-editorial text-xl group-hover:border-chartreuse group-hover:text-chartreuse transition-colors">
+                  D
+                </div>
+                <div>
+                  <span className="font-mono-tag text-xs font-semibold tracking-widest text-bone uppercase block">
+                    {data.meta.name}
+                  </span>
+                  <span className="font-mono-tag text-[10px] tracking-wider text-bone-muted uppercase block">
+                    STUDENT · BUILDER · LEADER
+                  </span>
+                </div>
+              </a>
+
+              {/* Desktop Editorial Navigation Links */}
+              <nav className="hidden lg:flex items-center space-x-7">
+                {[
+                  { label: "HOME", href: "#home", id: "home" },
+                  { label: "STORY", href: "#story", id: "story" },
+                  { label: "BUILD", href: "#build", id: "build" },
+                  { label: "WORK", href: "#work", id: "work" },
+                  { label: "PROTOSEM", href: "#protosem", id: "protosem" },
+                  { label: "PROOF", href: "#proof", id: "proof" },
+                  { label: "GROWTH", href: "#growth", id: "growth" },
+                  { label: "NOW", href: "#now", id: "now" },
+                  { label: "CONTACT", href: "#contact", id: "contact" }
+                ].map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className={`font-mono-tag text-xs tracking-widest transition-all relative py-1 ${
+                      activeSection === item.id
+                        ? "text-chartreuse font-medium"
+                        : "text-bone-muted hover:text-bone"
+                    }`}
+                  >
+                    {item.label}
+                    {activeSection === item.id && (
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-chartreuse"></span>
+                    )}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Action Controls & Edit Mode Toggle */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    const next = !editMode;
+                    setEditMode(next);
+                    showToast(next ? "Edit Mode Enabled — Click text or '+ Add' to modify" : "Public Mode Enabled", "info");
+                  }}
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider border transition-all ${
+                    editMode
+                      ? "bg-chartreuse text-obsidian font-semibold border-chartreuse shadow-[0_0_15px_rgba(212,249,51,0.4)]"
+                      : "bg-obsidian-surface/60 text-bone-muted border-obsidian-border hover:border-chartreuse/50 hover:text-bone"
+                  }`}
+                  title="Toggle Portfolio Edit Mode"
+                >
+                  <span className={`w-2 h-2 rounded-full ${editMode ? "bg-obsidian animate-ping" : "bg-chartreuse/70"}`}></span>
+                  <span>{editMode ? "EDITING ON" : "EDIT"}</span>
+                </button>
+
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="lg:hidden p-2 rounded-md border border-obsidian-border text-bone hover:border-chartreuse/50"
+                  aria-label="Toggle navigation menu"
+                >
+                  <Icon name={mobileMenuOpen ? "x" : "menu"} className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Navigation Drawer */}
+            {mobileMenuOpen && (
+              <div className="lg:hidden bg-obsidian-surface border-b border-obsidian-border px-6 py-6 space-y-4">
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { label: "HOME", href: "#home" },
+                    { label: "STORY", href: "#story" },
+                    { label: "BUILD", href: "#build" },
+                    { label: "WORK", href: "#work" },
+                    { label: "PROTOSEM", href: "#protosem" },
+                    { label: "PROOF", href: "#proof" },
+                    { label: "GROWTH", href: "#growth" },
+                    { label: "NOW", href: "#now" },
+                    { label: "CONTACT", href: "#contact" }
+                  ].map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-center py-2.5 px-2 font-mono-tag text-xs tracking-wider text-bone-muted hover:text-chartreuse hover:bg-obsidian-card rounded border border-obsidian-border"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </header>
+
+          {/* Edit Mode Persistent Floating Dock */}
+          {editMode && (
+            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-obsidian-card/95 border border-chartreuse/40 backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-4 text-xs font-mono-tag">
+              <div className="flex items-center gap-2 pr-3 border-r border-obsidian-border text-chartreuse">
+                <span className="w-2 h-2 rounded-full bg-chartreuse animate-ping"></span>
+                <span>EDIT MODE LIVE</span>
+              </div>
+              <button
+                onClick={handleUndo}
+                className="text-bone-muted hover:text-bone flex items-center gap-1.5"
+                title="Undo last change"
+              >
+                <Icon name="rotate-ccw" className="w-3.5 h-3.5" />
+                <span>UNDO</span>
+              </button>
+              <button
+                onClick={handleExport}
+                className="text-bone-muted hover:text-chartreuse flex items-center gap-1.5"
+                title="Export all portfolio data as JSON"
+              >
+                <Icon name="download" className="w-3.5 h-3.5" />
+                <span>EXPORT JSON</span>
+              </button>
+              <label className="text-bone-muted hover:text-chartreuse flex items-center gap-1.5 cursor-pointer">
+                <Icon name="upload" className="w-3.5 h-3.5" />
+                <span>IMPORT JSON</span>
+                <input type="file" accept=".json" onChange={handleImport} className="hidden" />
+              </label>
+              <button
+                onClick={handleReset}
+                className="text-red-400/80 hover:text-red-400 flex items-center gap-1.5 pl-2 border-l border-obsidian-border"
+                title="Reset to default template"
+              >
+                <Icon name="trash-2" className="w-3.5 h-3.5" />
+                <span>RESET</span>
+              </button>
+            </div>
+          )}
+
+          {/* ========================================================================= */}
+          {/* SECTION 00: HERO / EDITORIAL MAGAZINE COVER                               */}
+          {/* ========================================================================= */}
+          <section id="home" className="relative min-h-[92vh] flex items-center border-b border-obsidian-border overflow-hidden pt-8 pb-16 lg:py-20">
+            {/* Background subtle radial ambient glow */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-chartreuse/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              
+              {/* Editorial Issue Number & Date Banner */}
+              <div className="flex flex-wrap items-center justify-between border-b border-obsidian-border pb-4 mb-8 text-xs font-mono-tag text-bone-muted">
+                <div className="flex items-center gap-3">
+                  <span className="text-chartreuse font-medium">VOL. 01</span>
+                  <span>/</span>
+                  <span>BUILDER'S JOURNAL</span>
+                  <span>/</span>
+                  <span>TAMIL NADU, INDIA</span>
+                </div>
+                <div className="flex items-center gap-2 mt-2 sm:mt-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-chartreuse animate-pulse"></span>
+                  <span className="text-bone">ACTIVE SPRINT: PROTOSEM W01</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                {/* Left Column: Editorial Headline & Narrative */}
+                <div className="lg:col-span-7 space-y-8">
+                  
+                  {/* Identity Tag */}
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-obsidian-surface border border-obsidian-border text-xs font-mono-tag tracking-wider text-chartreuse">
+                    <span className="w-1.5 h-1.5 bg-chartreuse"></span>
+                    {editMode ? (
+                      <input
+                        type="text"
+                        value={data.meta.role}
+                        onChange={(e) => updateField("meta.role", e.target.value)}
+                        className="bg-transparent border-b border-chartreuse/50 text-chartreuse focus:outline-none w-full"
+                      />
+                    ) : (
+                      <span>{data.meta.role}</span>
+                    )}
+                  </div>
+
+                  {/* Oversized Editorial Headline */}
+                  <div className="space-y-4">
+                    <h1 className="font-editorial text-5xl sm:text-7xl lg:text-8xl tracking-tight text-bone leading-[0.95]">
+                      {editMode ? (
+                        <textarea
+                          rows={2}
+                          value={data.meta.tagline}
+                          onChange={(e) => updateField("meta.tagline", e.target.value)}
+                          className="bg-transparent border border-chartreuse/40 rounded p-2 text-bone focus:outline-none w-full font-editorial"
+                        />
+                      ) : (
+                        <span>{data.meta.tagline}</span>
+                      )}
+                    </h1>
+                    
+                    <p className="text-lg sm:text-xl text-bone-muted max-w-2xl font-light leading-relaxed">
+                      {editMode ? (
+                        <textarea
+                          rows={2}
+                          value={data.meta.subtagline}
+                          onChange={(e) => updateField("meta.subtagline", e.target.value)}
+                          className="bg-transparent border border-chartreuse/40 rounded p-2 text-bone-muted focus:outline-none w-full text-base"
+                        />
+                      ) : (
+                        data.meta.subtagline
+                      )}
+                    </p>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap items-center gap-4 pt-2">
+                    <a
+                      href="#build"
+                      className="group inline-flex items-center gap-3 px-6 py-3.5 bg-chartreuse text-obsidian font-mono-tag text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-white transition-all shadow-[0_0_20px_rgba(212,249,51,0.2)]"
+                    >
+                      <span>EXPLORE WHAT I'M BUILDING</span>
+                      <Icon name="arrow-down-right" className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
+                    </a>
+
+                    <a
+                      href="#story"
+                      className="inline-flex items-center gap-3 px-6 py-3.5 bg-obsidian-surface border border-obsidian-border text-bone font-mono-tag text-xs font-medium tracking-wider uppercase rounded-sm hover:border-chartreuse/50 hover:text-chartreuse transition-all"
+                    >
+                      <span>READ MY STORY</span>
+                      <Icon name="book-open" className="w-4 h-4" />
+                    </a>
+                  </div>
+
+                  {/* Live Status Operational Matrix */}
+                  <div className="pt-6 border-t border-obsidian-border">
+                    <div className="text-[11px] font-mono-tag tracking-widest text-bone-muted uppercase mb-4 flex items-center gap-2">
+                      <Icon name="activity" className="w-3.5 h-3.5 text-chartreuse" />
+                      <span>LIVE OPERATING DASHBOARD</span>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {[
+                        { label: "CURRENTLY", val: data.liveStatus.currently, field: "liveStatus.currently" },
+                        { label: "LEARNING", val: data.liveStatus.learning, field: "liveStatus.learning" },
+                        { label: "BUILDING", val: data.liveStatus.building, field: "liveStatus.building" },
+                        { label: "PREPARING", val: data.liveStatus.preparing, field: "liveStatus.preparing" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="p-3 bg-obsidian-surface/60 border border-obsidian-border rounded-sm">
+                          <span className="font-mono-tag text-[10px] text-chartreuse block mb-1 uppercase tracking-wider">{item.label}</span>
+                          {editMode ? (
+                            <input
+                              type="text"
+                              value={item.val}
+                              onChange={(e) => updateField(item.field, e.target.value)}
+                              className="bg-transparent border-b border-chartreuse/50 text-xs text-bone w-full focus:outline-none"
+                            />
+                          ) : (
+                            <p className="text-xs text-bone font-medium truncate" title={item.val}>{item.val}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Right Column: Editorial Portrait & Spatial Frame */}
+                <div className="lg:col-span-5 relative">
+                  <div className="relative mx-auto max-w-md lg:max-w-none">
+                    
+                    {/* Frame Accents */}
+                    <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-chartreuse z-10 pointer-events-none"></div>
+                    <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-chartreuse z-10 pointer-events-none"></div>
+
+                    {/* Image Surface */}
+                    <div className="relative overflow-hidden rounded-sm border border-obsidian-border bg-obsidian-card group aspect-[4/5] shadow-2xl">
+                      <img
+                        src={data.meta.portrait}
+                        alt={data.meta.avatarAlt}
+                        className="w-full h-full object-cover grayscale contrast-125 brightness-95 group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-80"></div>
+                      
+                      {/* Photo Overlay Editorial Tag */}
+                      <div className="absolute bottom-4 left-4 right-4 p-4 bg-obsidian-card/80 backdrop-blur-md border border-obsidian-border rounded-sm">
+                        <div className="flex items-center justify-between text-xs font-mono-tag">
+                          <div>
+                            <span className="text-chartreuse block font-semibold">{data.meta.name}</span>
+                            <span className="text-bone-muted text-[10px]">COIMBATORE, TN</span>
+                          </div>
+                          <div className="text-right">
+                            <span className="px-2 py-0.5 rounded bg-chartreuse/10 text-chartreuse text-[10px] border border-chartreuse/20">
+                              OPERATOR
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Image Edit Control */}
+                      {editMode && (
+                        <div className="absolute top-4 right-4 z-20">
+                          <button
+                            onClick={() => {
+                              const newUrl = prompt("Enter new portrait image URL:", data.meta.portrait);
+                              if (newUrl) updateField("meta.portrait", newUrl);
+                            }}
+                            className="p-2 rounded bg-chartreuse text-obsidian font-mono-tag text-xs font-bold shadow-lg hover:bg-white"
+                          >
+                            REPLACE PHOTO
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 01: STORY / THE TRAJECTORY                                        */}
+          {/* ========================================================================= */}
+          <section id="story" className="py-24 border-b border-obsidian-border relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Section Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>01</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>EVOLUTION & GROUNDING</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone max-w-3xl leading-tight">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      value={data.story.title}
+                      onChange={(e) => updateField("story.title", e.target.value)}
+                      className="bg-transparent border-b border-chartreuse text-bone focus:outline-none w-full font-editorial"
+                    />
+                  ) : (
+                    data.story.title
+                  )}
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  {data.story.subtitle}
+                </p>
+              </div>
+
+              {/* Editorial Vertical Journey Timeline */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                {/* Left Storyline Column */}
+                <div className="lg:col-span-8 space-y-10 relative">
+                  
+                  {/* Vertical rule */}
+                  <div className="absolute top-4 bottom-4 left-4 sm:left-6 w-px bg-obsidian-border pointer-events-none"></div>
+
+                  {data.story.chapters.map((ch, idx) => (
+                    <div key={ch.id || idx} className="relative pl-12 sm:pl-16 group">
+                      
+                      {/* Step Marker Node */}
+                      <div className="absolute left-2.5 sm:left-4.5 top-1 -translate-x-1/2 w-4 h-4 rounded-full bg-obsidian border-2 border-bone/30 group-hover:border-chartreuse group-hover:bg-chartreuse transition-colors"></div>
+
+                      <div className="p-6 bg-obsidian-surface/80 border border-obsidian-border hover:border-chartreuse/40 rounded-sm transition-all">
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-2 font-mono-tag text-xs">
+                          <span className="px-2.5 py-0.5 rounded-sm bg-chartreuse-dim text-chartreuse border border-chartreuse/20 font-semibold tracking-wider">
+                            {ch.stage}
+                          </span>
+                          <span className="text-bone-dim text-[11px]">{ch.period}</span>
+                        </div>
+
+                        <h3 className="font-editorial text-2xl text-bone mt-2 mb-3">
+                          {editMode ? (
+                            <input
+                              type="text"
+                              value={ch.title}
+                              onChange={(e) => {
+                                const newChapters = [...data.story.chapters];
+                                newChapters[idx].title = e.target.value;
+                                updateField("story.chapters", newChapters);
+                              }}
+                              className="bg-transparent border-b border-chartreuse/40 text-bone focus:outline-none w-full font-editorial text-2xl"
+                            />
+                          ) : (
+                            ch.title
+                          )}
+                        </h3>
+
+                        <p className="text-bone-muted text-sm sm:text-base leading-relaxed font-light mb-4">
+                          {editMode ? (
+                            <textarea
+                              rows={3}
+                              value={ch.content}
+                              onChange={(e) => {
+                                const newChapters = [...data.story.chapters];
+                                newChapters[idx].content = e.target.value;
+                                updateField("story.chapters", newChapters);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-2 text-bone-muted focus:outline-none w-full text-sm"
+                            />
+                          ) : (
+                            ch.content
+                          )}
+                        </p>
+
+                        <div className="pt-3 border-t border-obsidian-border flex items-center gap-2 font-mono-tag text-xs text-bone-dim">
+                          <span className="text-chartreuse">TAKEAWAY:</span>
+                          <span className="text-bone-muted italic">{ch.takeaway}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Add Chapter Control in Edit Mode */}
+                  {editMode && (
+                    <div className="pl-16">
+                      <button
+                        onClick={() => {
+                          const newCh = {
+                            id: `ch-${Date.now()}`,
+                            stage: "NEW CHAPTER",
+                            title: "Untitled Story Chapter",
+                            period: "Present",
+                            content: "Write your chapter reflection here...",
+                            takeaway: "Core insight learned.",
+                            photo: ""
+                          };
+                          updateField("story.chapters", [...data.story.chapters, newCh]);
+                          showToast("Added new story chapter", "success");
+                        }}
+                        className="px-4 py-2 border border-dashed border-chartreuse text-chartreuse font-mono-tag text-xs hover:bg-chartreuse hover:text-obsidian rounded"
+                      >
+                        + ADD STORY CHAPTER
+                      </button>
+                    </div>
+                  )}
+
+                </div>
+
+                {/* Right Column: Father's Mentorship & Ground Truth Reflection */}
+                <div className="lg:col-span-4 space-y-6">
+                  
+                  <div className="sticky top-28 p-8 bg-obsidian-card border border-chartreuse/25 rounded-sm shadow-xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-chartreuse/5 rounded-full blur-2xl pointer-events-none"></div>
+                    
+                    <div className="font-mono-tag text-xs text-chartreuse mb-2 flex items-center gap-2">
+                      <Icon name="heart-handshake" className="w-4 h-4" />
+                      <span>FOUNDATIONAL INFLUENCE</span>
+                    </div>
+
+                    <h4 className="font-editorial text-2xl text-bone mb-3">
+                      {data.story.fatherMentorship.title}
+                    </h4>
+
+                    <p className="font-mono-tag text-xs text-bone-muted mb-4 pb-4 border-b border-obsidian-border">
+                      {data.story.fatherMentorship.subtitle}
+                    </p>
+
+                    <blockquote className="font-light text-bone-muted text-sm leading-relaxed mb-6 italic">
+                      {editMode ? (
+                        <textarea
+                          rows={6}
+                          value={data.story.fatherMentorship.content}
+                          onChange={(e) => updateField("story.fatherMentorship.content", e.target.value)}
+                          className="bg-transparent border border-chartreuse/40 rounded p-2 text-bone-muted focus:outline-none w-full text-xs font-sans not-italic"
+                        />
+                      ) : (
+                        `"${data.story.fatherMentorship.content}"`
+                      )}
+                    </blockquote>
+
+                    <div className="p-4 bg-obsidian-surface border-l-2 border-chartreuse rounded-r-sm">
+                      <span className="font-mono-tag text-[10px] text-chartreuse uppercase block mb-1">FIRST PRINCIPLE</span>
+                      <p className="font-mono-tag text-xs text-bone italic">
+                        {data.story.fatherMentorship.quote}
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 02: BUILD / THINGS I'M BUILDING                                   */}
+          {/* ========================================================================= */}
+          <section id="build" className="py-24 border-b border-obsidian-border bg-obsidian/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Section Header */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                  <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                    <span>02</span>
+                    <span className="w-8 h-px bg-chartreuse/40"></span>
+                    <span>ACTIVE LAB & INCUBATION</span>
+                  </div>
+                  <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                    THINGS I'M BUILDING
+                  </h2>
+                  <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                    An open ledger of active prototypes, venture exploration, and structured experiments across data systems and real-world trade.
+                  </p>
+                </div>
+
+                {/* Edit Mode Add Idea */}
+                {editMode && (
+                  <button
+                    onClick={() => {
+                      const newIdea = {
+                        id: `b-${Date.now()}`,
+                        category: "BUILDING",
+                        title: "New Venture / Engineering Experiment",
+                        idea: "Describe the core hypothesis or product...",
+                        why: "Why this matters in the real world...",
+                        experiment: "Initial tests or dataset trials...",
+                        status: "Ideation & Validation",
+                        next: "Define MVP wireframes and architecture.",
+                        date: "2026",
+                        tag: "Experiment / Data",
+                        link: "#",
+                        image: ""
+                      };
+                      updateField("build", [newIdea, ...data.build]);
+                      showToast("Added new Idea Card to Build section", "success");
+                    }}
+                    className="self-start md:self-auto px-5 py-2.5 bg-chartreuse text-obsidian font-mono-tag text-xs font-bold rounded-sm hover:bg-white transition-all flex items-center gap-2"
+                  >
+                    <Icon name="plus" className="w-4 h-4" />
+                    <span>ADD IDEA</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Categorized Idea Grid: BUILDING, EXPLORING, PARKED */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.build.map((item, idx) => (
+                  <div
+                    key={item.id || idx}
+                    className="p-6 bg-obsidian-card border border-obsidian-border hover:border-chartreuse/40 rounded-sm flex flex-col justify-between group transition-all relative overflow-hidden"
+                  >
+                    {/* Category Pill */}
+                    <div className="flex items-center justify-between gap-2 mb-4 font-mono-tag text-xs">
+                      <span className={`px-2.5 py-1 rounded-sm text-[11px] font-semibold tracking-wider ${
+                        item.category === "BUILDING"
+                          ? "bg-chartreuse text-obsidian"
+                          : item.category === "EXPLORING"
+                          ? "bg-obsidian-surface text-chartreuse border border-chartreuse/30"
+                          : "bg-obsidian-surface text-bone-dim border border-obsidian-border"
+                      }`}>
+                        {item.category}
+                      </span>
+                      <span className="text-bone-dim text-[11px]">{item.date}</span>
+                    </div>
+
+                    {/* Image if present */}
+                    {item.image && (
+                      <div className="mb-4 h-36 w-full rounded overflow-hidden border border-obsidian-border bg-obsidian-surface">
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    )}
+
+                    {/* Content Details */}
+                    <div className="space-y-4 flex-1">
+                      <h3 className="font-editorial text-2xl text-bone group-hover:text-chartreuse transition-colors">
+                        {editMode ? (
+                          <input
+                            type="text"
+                            value={item.title}
+                            onChange={(e) => {
+                              const newBuild = [...data.build];
+                              newBuild[idx].title = e.target.value;
+                              updateField("build", newBuild);
+                            }}
+                            className="bg-transparent border-b border-chartreuse text-bone focus:outline-none w-full font-editorial text-2xl"
+                          />
+                        ) : (
+                          item.title
+                        )}
+                      </h3>
+
+                      {/* IDEA */}
+                      <div className="space-y-1">
+                        <span className="font-mono-tag text-[10px] text-chartreuse uppercase block">IDEA</span>
+                        <p className="text-xs text-bone-muted font-light leading-relaxed">
+                          {editMode ? (
+                            <textarea
+                              rows={2}
+                              value={item.idea}
+                              onChange={(e) => {
+                                const newBuild = [...data.build];
+                                newBuild[idx].idea = e.target.value;
+                                updateField("build", newBuild);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-1 text-bone-muted focus:outline-none w-full text-xs"
+                            />
+                          ) : (
+                            item.idea
+                          )}
+                        </p>
+                      </div>
+
+                      {/* WHY */}
+                      <div className="space-y-1">
+                        <span className="font-mono-tag text-[10px] text-chartreuse uppercase block">WHY IT MATTERS</span>
+                        <p className="text-xs text-bone-muted font-light leading-relaxed">
+                          {editMode ? (
+                            <textarea
+                              rows={2}
+                              value={item.why}
+                              onChange={(e) => {
+                                const newBuild = [...data.build];
+                                newBuild[idx].why = e.target.value;
+                                updateField("build", newBuild);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-1 text-bone-muted focus:outline-none w-full text-xs"
+                            />
+                          ) : (
+                            item.why
+                          )}
+                        </p>
+                      </div>
+
+                      {/* EXPERIMENT & STATUS */}
+                      <div className="p-3 bg-obsidian-surface/60 rounded border border-obsidian-border space-y-2 text-xs font-mono-tag">
+                        <div>
+                          <span className="text-bone-dim text-[10px] uppercase block">STATUS:</span>
+                          <span className="text-bone">{item.status}</span>
+                        </div>
+                        <div>
+                          <span className="text-bone-dim text-[10px] uppercase block">NEXT MOVE:</span>
+                          <span className="text-chartreuse">{item.next}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Footer Controls / Links */}
+                    <div className="mt-6 pt-4 border-t border-obsidian-border flex items-center justify-between font-mono-tag text-xs">
+                      <span className="text-bone-dim text-[11px]">{item.tag}</span>
+                      
+                      {editMode ? (
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => {
+                              const newCat = item.category === "BUILDING" ? "EXPLORING" : item.category === "EXPLORING" ? "PARKED" : "BUILDING";
+                              const newBuild = [...data.build];
+                              newBuild[idx].category = newCat;
+                              updateField("build", newBuild);
+                            }}
+                            className="text-[10px] text-chartreuse border border-chartreuse/30 px-1.5 py-0.5 rounded"
+                          >
+                            CHANGE CAT
+                          </button>
+                          <button
+                            onClick={() => {
+                              const newBuild = data.build.filter((_, i) => i !== idx);
+                              updateField("build", newBuild);
+                              showToast("Idea removed", "info");
+                            }}
+                            className="text-[10px] text-red-400 border border-red-400/30 px-1.5 py-0.5 rounded"
+                          >
+                            DELETE
+                          </button>
+                        </div>
+                      ) : (
+                        item.link && (
+                          <a href={item.link} className="text-bone hover:text-chartreuse flex items-center gap-1">
+                            <span>VIEW DETAILS</span>
+                            <Icon name="arrow-up-right" className="w-3.5 h-3.5" />
+                          </a>
+                        )
+                      )}
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 03: WORK / CASE STUDIES                                           */}
+          {/* ========================================================================= */}
+          <section id="work" className="py-24 border-b border-obsidian-border">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Section Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>03</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>ENGINEERING & STRATEGY CASE STUDIES</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                  WORK
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  In-depth architectural reviews of real data systems, venture frameworks, and peer-reviewed research.
+                </p>
+              </div>
+
+              {/* Case Study Cards */}
+              <div className="space-y-16">
+                {data.projects.map((proj, pIdx) => (
+                  <div
+                    key={proj.id || pIdx}
+                    className="p-8 sm:p-10 bg-obsidian-card border border-obsidian-border rounded-sm hover:border-chartreuse/40 transition-all"
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                      
+                      {/* Left Meta & Imagery */}
+                      <div className="lg:col-span-5 space-y-6">
+                        <div className="flex items-center gap-3 font-mono-tag text-xs">
+                          <span className="px-3 py-1 bg-chartreuse text-obsidian font-bold rounded-sm text-[11px] tracking-wider uppercase">
+                            {proj.badge}
+                          </span>
+                        </div>
+
+                        <h3 className="font-editorial text-3xl sm:text-4xl text-bone leading-tight">
+                          {editMode ? (
+                            <input
+                              type="text"
+                              value={proj.title}
+                              onChange={(e) => {
+                                const newP = [...data.projects];
+                                newP[pIdx].title = e.target.value;
+                                updateField("projects", newP);
+                              }}
+                              className="bg-transparent border-b border-chartreuse text-bone focus:outline-none w-full font-editorial"
+                            />
+                          ) : (
+                            proj.title
+                          )}
+                        </h3>
+
+                        <p className="text-bone-muted text-sm sm:text-base font-light leading-relaxed">
+                          {editMode ? (
+                            <textarea
+                              rows={3}
+                              value={proj.summary}
+                              onChange={(e) => {
+                                const newP = [...data.projects];
+                                newP[pIdx].summary = e.target.value;
+                                updateField("projects", newP);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-2 text-bone-muted focus:outline-none w-full text-sm"
+                            />
+                          ) : (
+                            proj.summary
+                          )}
+                        </p>
+
+                        {/* Image Showcase */}
+                        {proj.image && (
+                          <div className="relative aspect-video rounded overflow-hidden border border-obsidian-border">
+                            <img src={proj.image} alt={proj.title} className="w-full h-full object-cover" />
+                            {editMode && (
+                              <button
+                                onClick={() => {
+                                  const url = prompt("Enter project image URL:", proj.image);
+                                  if (url) {
+                                    const newP = [...data.projects];
+                                    newP[pIdx].image = url;
+                                    updateField("projects", newP);
+                                  }
+                                }}
+                                className="absolute top-3 right-3 px-2 py-1 bg-chartreuse text-obsidian text-[10px] font-mono-tag font-bold rounded shadow"
+                              >
+                                CHANGE IMAGE
+                              </button>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Tools / Tech Stack */}
+                        <div className="pt-2">
+                          <span className="font-mono-tag text-[10px] text-chartreuse uppercase block mb-2">TOOLS & METHODS</span>
+                          <div className="flex flex-wrap gap-2">
+                            {proj.tools.map((t, tidx) => (
+                              <span key={tidx} className="px-2.5 py-1 bg-obsidian-surface border border-obsidian-border rounded-sm font-mono-tag text-xs text-bone-muted">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Right Case Study Deep Dive Breakdown */}
+                      <div className="lg:col-span-7 space-y-6 lg:border-l lg:border-obsidian-border lg:pl-10">
+                        
+                        {/* THE QUESTION */}
+                        <div className="p-4 bg-obsidian-surface/60 border-l-2 border-chartreuse rounded-r-sm">
+                          <span className="font-mono-tag text-[10px] text-chartreuse uppercase tracking-wider block mb-1">CORE RESEARCH / BUSINESS QUESTION</span>
+                          <p className="font-sans text-sm text-bone font-medium">
+                            {proj.question}
+                          </p>
+                        </div>
+
+                        {/* THE PROBLEM */}
+                        <div className="space-y-1">
+                          <span className="font-mono-tag text-xs text-chartreuse uppercase tracking-wider block">01 / THE PROBLEM</span>
+                          <p className="text-sm text-bone-muted font-light leading-relaxed">
+                            {proj.problem}
+                          </p>
+                        </div>
+
+                        {/* THE APPROACH */}
+                        <div className="space-y-1">
+                          <span className="font-mono-tag text-xs text-chartreuse uppercase tracking-wider block">02 / THE APPROACH</span>
+                          <p className="text-sm text-bone-muted font-light leading-relaxed">
+                            {proj.approach}
+                          </p>
+                        </div>
+
+                        {/* RESULT & KEY FINDINGS */}
+                        <div className="space-y-1">
+                          <span className="font-mono-tag text-xs text-chartreuse uppercase tracking-wider block">03 / RESULT & FINDINGS</span>
+                          <p className="text-sm text-bone font-normal leading-relaxed">
+                            {proj.result}
+                          </p>
+                        </div>
+
+                        {/* WHAT I LEARNED & NEXT STEP */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-obsidian-border font-mono-tag text-xs">
+                          <div className="p-3 bg-obsidian-surface rounded border border-obsidian-border">
+                            <span className="text-bone-dim text-[10px] uppercase block mb-1">WHAT I LEARNED</span>
+                            <p className="text-bone-muted font-sans text-xs">{proj.learnings}</p>
+                          </div>
+                          <div className="p-3 bg-obsidian-surface rounded border border-obsidian-border">
+                            <span className="text-chartreuse text-[10px] uppercase block mb-1">NEXT STEP</span>
+                            <p className="text-bone font-sans text-xs">{proj.nextStep}</p>
+                          </div>
+                        </div>
+
+                        {/* Action Links */}
+                        <div className="flex flex-wrap items-center gap-3 pt-4 font-mono-tag text-xs">
+                          {proj.links.paper && (
+                            <a href={proj.links.paper} className="px-4 py-2 bg-obsidian-surface border border-obsidian-border hover:border-chartreuse text-bone hover:text-chartreuse rounded-sm flex items-center gap-2">
+                              <Icon name="file-text" className="w-3.5 h-3.5 text-chartreuse" />
+                              <span>VIEW RESEARCH RECORD</span>
+                            </a>
+                          )}
+                          {proj.links.github && (
+                            <a href={proj.links.github} className="px-4 py-2 bg-obsidian-surface border border-obsidian-border hover:border-chartreuse text-bone hover:text-chartreuse rounded-sm flex items-center gap-2">
+                              <Icon name="github" className="w-3.5 h-3.5" />
+                              <span>GITHUB REPO</span>
+                            </a>
+                          )}
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 04: PROTOSEM / 20-WEEK WORKSPACE                                  */}
+          {/* ========================================================================= */}
+          <section id="protosem" className="py-24 border-b border-obsidian-border bg-obsidian/60 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                  <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                    <span>04</span>
+                    <span className="w-8 h-px bg-chartreuse/40"></span>
+                    <span>20-WEEK VENTURE PROTOTYPING ENGINE</span>
+                  </div>
+                  <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                    {data.protosem.title}
+                  </h2>
+                  <p className="font-mono-tag text-xs text-chartreuse tracking-widest uppercase mt-2">
+                    {data.protosem.subtitle}
+                  </p>
+                  <p className="mt-3 text-bone-muted text-base max-w-3xl font-light">
+                    {data.protosem.description}
+                  </p>
+                </div>
+
+                {/* Edit Mode Add Week */}
+                {editMode && (
+                  <button
+                    onClick={() => {
+                      const nextNum = weeks.length;
+                      const newW = {
+                        weekNumber: nextNum,
+                        label: `W${nextNum < 10 ? '0' + nextNum : nextNum}`,
+                        title: `Week ${nextNum}: Rapid Sprint & Implementation`,
+                        status: "UPCOMING",
+                        theme: "Prototype Iteration & Testing",
+                        days: [1, 2, 3, 4, 5].map(d => ({
+                          dayNumber: d,
+                          title: `Day 0${d} — ${d===1?'Discovery':d===2?'Architecture':d===3?'Build':d===4?'Validation':'Demo'}`,
+                          tag: d===1?'DISCOVERY':d===2?'ARCHITECTURE':d===3?'BUILD':d===4?'VALIDATION':'DEMO',
+                          whatIDid: "Sprint tasks...",
+                          whatILearned: "Key takeaway...",
+                          reflection: "Personal reflection...",
+                          blog: "",
+                          image: "",
+                          link: ""
+                        }))
+                      };
+                      updateField("protosem.weeks", [...weeks, newW]);
+                      showToast(`Added Week ${nextNum} to ProtoSem workspace!`, "success");
+                    }}
+                    className="self-start md:self-auto px-4 py-2 bg-chartreuse text-obsidian font-mono-tag text-xs font-bold rounded hover:bg-white flex items-center gap-2"
+                  >
+                    <Icon name="plus" className="w-4 h-4" />
+                    <span>ADD PROTOSEM WEEK</span>
+                  </button>
+                )}
+              </div>
+
+              {/* 20-Week Interactive Scrubber Timeline */}
+              <div className="p-6 bg-obsidian-card border border-obsidian-border rounded-sm mb-10">
+                <div className="flex items-center justify-between text-xs font-mono-tag text-bone-muted mb-4">
+                  <div className="flex items-center gap-2">
+                    <Icon name="layers" className="w-4 h-4 text-chartreuse" />
+                    <span>SELECT WEEK SPRINT (W00 & W01 COMPLETED)</span>
+                  </div>
+                  <span className="text-chartreuse font-medium">
+                    ACTIVE: {currentWeek.label} · {currentWeek.status}
+                  </span>
+                </div>
+
+                {/* Horizontal Week Pills Scroller */}
+                <div className="flex gap-2 overflow-x-auto pb-3 pt-1 scrollbar-thin">
+                  {Array.from({ length: 20 }).map((_, i) => {
+                    const existingWeek = weeks[i];
+                    const isCompleted = i === 0 || i === 1;
+                    const isCurrent = selectedWeekIndex === i;
+                    const label = `W${i < 10 ? '0' + i : i}`;
+
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => {
+                          if (existingWeek) {
+                            setSelectedWeekIndex(i);
+                            setSelectedDayIndex(0);
+                          } else {
+                            showToast(`Week ${i} is planned in the 20-week trajectory.`, "info");
+                          }
+                        }}
+                        className={`flex-shrink-0 px-3.5 py-2 rounded-sm font-mono-tag text-xs flex flex-col items-center gap-1 transition-all border ${
+                          isCurrent
+                            ? "bg-chartreuse text-obsidian font-bold border-chartreuse shadow-[0_0_12px_rgba(212,249,51,0.3)]"
+                            : isCompleted
+                            ? "bg-obsidian-surface text-chartreuse border-chartreuse/30 hover:border-chartreuse"
+                            : existingWeek
+                            ? "bg-obsidian-surface text-bone-muted border-obsidian-border hover:border-bone/40"
+                            : "bg-obsidian-surface/40 text-bone-dim border-obsidian-border/50 opacity-60 cursor-not-allowed"
+                        }`}
+                      >
+                        <span>{label}</span>
+                        <span className="text-[9px]">
+                          {isCompleted ? "✓" : existingWeek ? "○" : "·"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Active Week Details Card */}
+              <div className="bg-obsidian-card border border-obsidian-border rounded-sm p-6 sm:p-8">
+                
+                {/* Week Header */}
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-obsidian-border mb-8">
+                  <div>
+                    <div className="flex items-center gap-2 font-mono-tag text-xs text-chartreuse mb-1">
+                      <span className="px-2 py-0.5 rounded bg-chartreuse/10 border border-chartreuse/20 font-bold">
+                        {currentWeek.label}
+                      </span>
+                      <span>STATUS: {currentWeek.status}</span>
+                    </div>
+                    <h3 className="font-editorial text-2xl sm:text-3xl text-bone">
+                      {currentWeek.title}
+                    </h3>
+                    <p className="font-mono-tag text-xs text-bone-muted mt-1">
+                      THEME: {currentWeek.theme}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Day Tabs: DAY 01 Discovery, DAY 02 Architecture, DAY 03 Build, DAY 04 Validation, DAY 05 Demo */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-8 font-mono-tag text-xs">
+                  {currentWeek.days?.map((day, dIdx) => (
+                    <button
+                      key={dIdx}
+                      onClick={() => setSelectedDayIndex(dIdx)}
+                      className={`p-3 rounded-sm border text-left transition-all ${
+                        selectedDayIndex === dIdx
+                          ? "bg-obsidian-surface text-chartreuse border-chartreuse font-medium shadow-md"
+                          : "bg-obsidian-surface/50 text-bone-muted border-obsidian-border hover:border-chartreuse/30 hover:text-bone"
+                      }`}
+                    >
+                      <span className="text-[10px] block opacity-70">DAY 0{day.dayNumber}</span>
+                      <span className="font-bold text-xs truncate block">{day.tag}</span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Active Day Full Breakdown */}
+                {currentDay && (
+                  <div className="p-6 sm:p-8 bg-obsidian-surface border border-obsidian-border rounded-sm space-y-6">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-obsidian-border">
+                      <div>
+                        <span className="font-mono-tag text-xs text-chartreuse uppercase block mb-1">
+                          DAY 0{currentDay.dayNumber} · {currentDay.tag}
+                        </span>
+                        <h4 className="font-editorial text-2xl text-bone">
+                          {currentDay.title}
+                        </h4>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* What I Did */}
+                      <div className="space-y-2 p-4 bg-obsidian-card rounded border border-obsidian-border">
+                        <span className="font-mono-tag text-xs text-chartreuse flex items-center gap-1.5">
+                          <Icon name="check-circle" className="w-3.5 h-3.5" />
+                          <span>WHAT I DID</span>
+                        </span>
+                        <p className="text-sm text-bone-muted font-light leading-relaxed">
+                          {editMode ? (
+                            <textarea
+                              rows={3}
+                              value={currentDay.whatIDid}
+                              onChange={(e) => {
+                                const newWeeks = [...weeks];
+                                newWeeks[selectedWeekIndex].days[selectedDayIndex].whatIDid = e.target.value;
+                                updateField("protosem.weeks", newWeeks);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-1 text-bone-muted focus:outline-none w-full text-xs"
+                            />
+                          ) : (
+                            currentDay.whatIDid
+                          )}
+                        </p>
+                      </div>
+
+                      {/* What I Learned */}
+                      <div className="space-y-2 p-4 bg-obsidian-card rounded border border-obsidian-border">
+                        <span className="font-mono-tag text-xs text-chartreuse flex items-center gap-1.5">
+                          <Icon name="lightbulb" className="w-3.5 h-3.5" />
+                          <span>WHAT I LEARNED</span>
+                        </span>
+                        <p className="text-sm text-bone-muted font-light leading-relaxed">
+                          {editMode ? (
+                            <textarea
+                              rows={3}
+                              value={currentDay.whatILearned}
+                              onChange={(e) => {
+                                const newWeeks = [...weeks];
+                                newWeeks[selectedWeekIndex].days[selectedDayIndex].whatILearned = e.target.value;
+                                updateField("protosem.weeks", newWeeks);
+                              }}
+                              className="bg-transparent border border-chartreuse/40 rounded p-1 text-bone-muted focus:outline-none w-full text-xs"
+                            />
+                          ) : (
+                            currentDay.whatILearned
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Reflection / Blog Note */}
+                    <div className="p-4 bg-obsidian-card border-l-2 border-chartreuse rounded-r-sm space-y-2">
+                      <span className="font-mono-tag text-[10px] text-chartreuse uppercase block">
+                        DAILY REFLECTION & SPRINT NOTE
+                      </span>
+                      <p className="font-sans text-sm text-bone italic">
+                        "{currentDay.reflection || "Consistent daily logging in progress."}"
+                      </p>
+                      {currentDay.blog && (
+                        <p className="font-mono-tag text-xs text-bone-muted pt-2 border-t border-obsidian-border">
+                          BLOG POST: {currentDay.blog}
+                        </p>
+                      )}
+                    </div>
+
+                  </div>
+                )}
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 05: PROOF / CERTIFICATIONS, SCHOLARSHIPS & RESEARCH               */}
+          {/* ========================================================================= */}
+          <section id="proof" className="py-24 border-b border-obsidian-border">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Section Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>05</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>VERIFIED RECORD</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                  PROOF
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  Tangible evidence of merit, peer-reviewed international research, and professional simulation credentials.
+                </p>
+              </div>
+
+              <div className="space-y-16">
+                
+                {/* 1. RESEARCH PAPER SPOTLIGHT */}
+                <div>
+                  <div className="flex items-center gap-2 font-mono-tag text-xs text-chartreuse mb-6 uppercase tracking-wider">
+                    <Icon name="book-open-check" className="w-4 h-4" />
+                    <span>01 // PEER-REVIEWED RESEARCH PRESENTATION</span>
+                  </div>
+
+                  {data.proof.research.map((r, idx) => (
+                    <div key={r.id || idx} className="p-8 bg-obsidian-card border border-chartreuse/30 rounded-sm shadow-xl relative overflow-hidden">
+                      <div className="flex flex-wrap items-center justify-between gap-2 font-mono-tag text-xs text-chartreuse mb-3">
+                        <span className="px-2.5 py-1 bg-chartreuse text-obsidian font-bold rounded-sm">
+                          {r.status}
+                        </span>
+                        <span className="text-bone-muted">{r.date}</span>
+                      </div>
+
+                      <h3 className="font-editorial text-3xl sm:text-4xl text-bone mb-3">
+                        {r.title}
+                      </h3>
+
+                      <div className="font-mono-tag text-xs text-bone-muted space-y-1 mb-6 pb-6 border-b border-obsidian-border">
+                        <p className="text-bone">{r.conference}</p>
+                        <p className="text-bone-dim">{r.organizers}</p>
+                        <p className="text-chartreuse font-medium">Author: {r.authors}</p>
+                      </div>
+
+                      <div className="space-y-2 mb-6">
+                        <span className="font-mono-tag text-[10px] text-chartreuse uppercase block">ABSTRACT SUMMARY</span>
+                        <p className="text-sm text-bone-muted font-light leading-relaxed">
+                          {r.abstract}
+                        </p>
+                      </div>
+
+                      {/* Presentation / Abstract Buttons */}
+                      <div className="flex flex-wrap items-center gap-3 pt-2 font-mono-tag text-xs">
+                        <button
+                          onClick={() => showToast("ICCSAM 2026 Presentation Record Verified", "success")}
+                          className="px-4 py-2 bg-chartreuse text-obsidian font-semibold rounded-sm hover:bg-white flex items-center gap-2"
+                        >
+                          <Icon name="presentation" className="w-4 h-4" />
+                          <span>VIEW PRESENTATION RECORD</span>
+                        </button>
+                        <button
+                          onClick={() => showToast("Conference Abstract Archived", "info")}
+                          className="px-4 py-2 bg-obsidian-surface border border-obsidian-border hover:border-chartreuse text-bone rounded-sm flex items-center gap-2"
+                        >
+                          <Icon name="file-text" className="w-4 h-4" />
+                          <span>VIEW ABSTRACT</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 2. ACHIEVEMENTS / MERIT SCHOLARSHIP */}
+                <div>
+                  <div className="flex items-center gap-2 font-mono-tag text-xs text-chartreuse mb-6 uppercase tracking-wider">
+                    <Icon name="award" className="w-4 h-4" />
+                    <span>02 // INSTITUTIONAL HONORS & SCHOLARSHIPS</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {data.proof.achievements.map((ach, aIdx) => (
+                      <div key={ach.id || aIdx} className="p-6 bg-obsidian-card border border-obsidian-border rounded-sm hover:border-chartreuse/40 transition-all">
+                        <div className="flex items-center justify-between font-mono-tag text-xs text-bone-dim mb-3">
+                          <span className="text-chartreuse font-medium">{ach.category}</span>
+                          <span>{ach.date}</span>
+                        </div>
+
+                        <h4 className="font-editorial text-2xl text-bone mb-2">
+                          {ach.title}
+                        </h4>
+
+                        <p className="font-mono-tag text-xs text-bone-muted mb-4">
+                          Awarded by: {ach.awardingBody} ({ach.period})
+                        </p>
+
+                        <p className="text-sm text-bone-muted font-light leading-relaxed mb-4">
+                          {ach.recognition}
+                        </p>
+
+                        <div className="pt-3 border-t border-obsidian-border font-mono-tag text-[11px] text-bone-dim">
+                          <span>SIGNATORIES: {ach.signatories}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 3. CERTIFICATIONS */}
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2 font-mono-tag text-xs text-chartreuse uppercase tracking-wider">
+                      <Icon name="shield-check" className="w-4 h-4" />
+                      <span>03 // PROFESSIONAL CERTIFICATIONS & SIMULATIONS</span>
+                    </div>
+
+                    {editMode && (
+                      <button
+                        onClick={() => {
+                          const newC = {
+                            id: `c-${Date.now()}`,
+                            title: "New Professional Certification",
+                            issuer: "Institution / Organization",
+                            platform: "Platform",
+                            issueDate: "2026",
+                            verificationCode: "",
+                            focus: "Domain Focus",
+                            description: "Key curriculum and assessment details...",
+                            credentialUrl: "",
+                            pdfUrl: "",
+                            image: ""
+                          };
+                          updateField("proof.certifications", [...data.proof.certifications, newC]);
+                          showToast("Added new certification record", "success");
+                        }}
+                        className="px-3 py-1 bg-chartreuse text-obsidian font-mono-tag text-xs font-bold rounded"
+                      >
+                        + ADD CERTIFICATE
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {data.proof.certifications.map((c, cIdx) => (
+                      <div key={c.id || cIdx} className="p-6 bg-obsidian-card border border-obsidian-border rounded-sm hover:border-chartreuse/40 transition-all flex flex-col justify-between">
+                        <div>
+                          <div className="flex items-center justify-between font-mono-tag text-xs text-bone-dim mb-2">
+                            <span className="text-chartreuse font-medium">{c.issuer}</span>
+                            <span>{c.issueDate}</span>
+                          </div>
+
+                          <h4 className="font-editorial text-2xl text-bone mb-2">
+                            {c.title}
+                          </h4>
+
+                          <p className="font-mono-tag text-xs text-bone-muted mb-3">
+                            Focus: {c.focus}
+                          </p>
+
+                          <p className="text-xs text-bone-muted font-light leading-relaxed mb-4">
+                            {c.description}
+                          </p>
+
+                          {/* Metadata block: Verification ID & Signatories */}
+                          <div className="p-3 bg-obsidian-surface rounded border border-obsidian-border font-mono-tag text-xs space-y-1 mb-4">
+                            {c.verificationCode && (
+                              <div className="flex items-center justify-between text-[11px]">
+                                <span className="text-bone-dim">VERIFICATION CODE:</span>
+                                <span className="text-chartreuse font-mono">{c.verificationCode}</span>
+                              </div>
+                            )}
+                            {c.userId && (
+                              <div className="flex items-center justify-between text-[11px]">
+                                <span className="text-bone-dim">USER ID:</span>
+                                <span className="text-bone font-mono">{c.userId}</span>
+                              </div>
+                            )}
+                            {c.signatories && (
+                              <div className="text-[11px] text-bone-dim">
+                                <span>SIGNATORIES: {c.signatories}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Action buttons */}
+                        <div className="pt-4 border-t border-obsidian-border flex items-center justify-between font-mono-tag text-xs">
+                          {c.credentialUrl ? (
+                            <a
+                              href={c.credentialUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-chartreuse hover:text-white flex items-center gap-1.5 font-medium"
+                            >
+                              <span>VIEW CREDENTIAL</span>
+                              <Icon name="external-link" className="w-3.5 h-3.5" />
+                            </a>
+                          ) : (
+                            <span className="text-bone-dim text-[11px]">VERIFIED INSTITUTIONAL RECORD</span>
+                          )}
+
+                          {editMode && (
+                            <button
+                              onClick={() => {
+                                const newC = data.proof.certifications.filter((_, i) => i !== cIdx);
+                                updateField("proof.certifications", newC);
+                                showToast("Certificate removed", "info");
+                              }}
+                              className="text-red-400 text-[10px]"
+                            >
+                              DELETE
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 06: CAPABILITY / NOT CHECKBOXES                                    */}
+          {/* ========================================================================= */}
+          <section id="capabilities" className="py-24 border-b border-obsidian-border bg-obsidian/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>06</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>CAPABILITY LANDSCAPE</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                  {data.capabilities.title}
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  {data.capabilities.subtitle}
+                </p>
+              </div>
+
+              {/* 6 Capability Clusters (No Progress Bars!) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.capabilities.clusters.map((cluster, idx) => (
+                  <div
+                    key={idx}
+                    className="p-6 bg-obsidian-card border border-obsidian-border hover:border-chartreuse/40 rounded-sm transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between font-mono-tag text-xs mb-3">
+                        <span className="px-2.5 py-1 rounded bg-chartreuse/10 text-chartreuse border border-chartreuse/20 font-bold tracking-wider">
+                          {cluster.category}
+                        </span>
+                        <span className="text-bone-dim text-[11px]">{cluster.skills.length} NODES</span>
+                      </div>
+
+                      <p className="font-mono-tag text-xs text-bone-muted mb-6">
+                        {cluster.description}
+                      </p>
+
+                      {/* Interactive Skill Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {cluster.skills.map((skill, sIdx) => (
+                          <span
+                            key={sIdx}
+                            className="px-3 py-1.5 rounded-sm bg-obsidian-surface border border-obsidian-border text-xs font-mono-tag text-bone hover:border-chartreuse hover:text-chartreuse transition-colors cursor-default"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 07: GROWTH / STUDENT → BUILDER → LEADER & PERSONALITY             */}
+          {/* ========================================================================= */}
+          <section id="growth" className="py-24 border-b border-obsidian-border">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>07</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>THE THREE CHAPTERS</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                  {data.growth.title}
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  {data.growth.subtitle}
+                </p>
+              </div>
+
+              {/* 3 Major Chapters */}
+              <div className="space-y-12 mb-20">
+                {data.growth.chapters.map((ch, idx) => (
+                  <div
+                    key={idx}
+                    className="p-8 sm:p-10 bg-obsidian-card border border-obsidian-border rounded-sm hover:border-chartreuse/40 transition-all"
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                      
+                      <div className="lg:col-span-4 space-y-3">
+                        <span className="font-mono-tag text-xs text-chartreuse tracking-widest block font-bold">
+                          {ch.label}
+                        </span>
+                        <h3 className="font-editorial text-4xl text-bone">
+                          {ch.title}
+                        </h3>
+                        <p className="font-mono-tag text-xs text-bone-muted">
+                          {ch.subtitle}
+                        </p>
+                      </div>
+
+                      <div className="lg:col-span-8 space-y-6 lg:border-l lg:border-obsidian-border lg:pl-10">
+                        <p className="text-bone-muted text-base font-light leading-relaxed">
+                          {ch.description}
+                        </p>
+
+                        {/* Highlights if Chapter 1 or 2 */}
+                        {ch.highlights && (
+                          <ul className="space-y-2.5 pt-2">
+                            {ch.highlights.map((h, hIdx) => (
+                              <li key={hIdx} className="flex items-start gap-3 text-sm text-bone font-light">
+                                <span className="text-chartreuse mt-1">✦</span>
+                                <span>{h}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {/* Chapter 3 Leadership Breakdown (LEED Director, Class Rep, Namadhu Pangu) */}
+                        {ch.initiatives && (
+                          <div className="space-y-6 pt-4 border-t border-obsidian-border">
+                            {ch.initiatives.map((init, iIdx) => (
+                              <div key={iIdx} className="p-4 bg-obsidian-surface rounded border border-obsidian-border space-y-2">
+                                <div className="flex flex-wrap items-center justify-between gap-2 font-mono-tag text-xs">
+                                  <span className="text-chartreuse font-bold">{init.role}</span>
+                                  <span className="text-bone-muted">{init.organization}</span>
+                                </div>
+                                <ul className="space-y-1.5 text-xs text-bone-muted pt-1">
+                                  {init.highlights.map((hi, hiIdx) => (
+                                    <li key={hiIdx} className="flex items-start gap-2">
+                                      <span className="text-bone-dim">→</span>
+                                      <span>{hi}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                      </div>
+
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Personality Snapshot: ENFJ Protagonist */}
+              <div className="p-8 sm:p-10 bg-obsidian-card border border-chartreuse/30 rounded-sm relative overflow-hidden">
+                <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-obsidian-border mb-8">
+                  <div>
+                    <span className="font-mono-tag text-xs text-chartreuse tracking-widest uppercase block mb-1">
+                      HOW I TEND TO WORK · OPERATIONAL PROFILE
+                    </span>
+                    <h3 className="font-editorial text-3xl text-bone">
+                      {data.personality.type} — {data.personality.typeName}
+                    </h3>
+                    <p className="font-mono-tag text-xs text-bone-muted mt-1">
+                      {data.personality.tagline}
+                    </p>
+                  </div>
+
+                  {/* Percentage Metric Badges */}
+                  <div className="flex flex-wrap gap-2 font-mono-tag text-xs">
+                    <span className="px-2.5 py-1 bg-obsidian-surface border border-obsidian-border rounded text-bone-muted">
+                      Extraverted <strong className="text-chartreuse">{data.personality.scores.extraverted}</strong>
+                    </span>
+                    <span className="px-2.5 py-1 bg-obsidian-surface border border-obsidian-border rounded text-bone-muted">
+                      Intuitive <strong className="text-chartreuse">{data.personality.scores.intuitive}</strong>
+                    </span>
+                    <span className="px-2.5 py-1 bg-obsidian-surface border border-obsidian-border rounded text-bone-muted">
+                      Feeling <strong className="text-chartreuse">{data.personality.scores.feeling}</strong>
+                    </span>
+                    <span className="px-2.5 py-1 bg-obsidian-surface border border-obsidian-border rounded text-bone-muted">
+                      Judging <strong className="text-chartreuse">{data.personality.scores.judging}</strong>
+                    </span>
+                  </div>
+                </div>
+
+                {/* 5 Core Translated Traits */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                  {data.personality.traits.map((trait, tIdx) => (
+                    <div key={tIdx} className="p-4 bg-obsidian-surface rounded border border-obsidian-border">
+                      <span className="font-mono-tag text-xs text-chartreuse font-bold block mb-2">
+                        {trait.label}
+                      </span>
+                      <p className="text-xs text-bone-muted font-light leading-relaxed">
+                        {trait.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 08: NOW / LIVE OPERATIONAL DASHBOARD                              */}
+          {/* ========================================================================= */}
+          <section id="now" className="py-24 border-b border-obsidian-border bg-obsidian/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              {/* Header */}
+              <div className="mb-16">
+                <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                  <span>08</span>
+                  <span className="w-8 h-px bg-chartreuse/40"></span>
+                  <span>REAL-TIME STATUS</span>
+                </div>
+                <h2 className="font-editorial text-4xl sm:text-6xl text-bone">
+                  {data.now.title}
+                </h2>
+                <p className="mt-4 text-bone-muted text-base sm:text-lg max-w-2xl font-light">
+                  {data.now.subtitle}
+                </p>
+              </div>
+
+              {/* Status Feed */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {data.now.items.map((item, idx) => (
+                  <div key={idx} className="p-6 bg-obsidian-card border border-obsidian-border rounded-sm hover:border-chartreuse/40 transition-all flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between font-mono-tag text-xs mb-3">
+                        <span className="text-chartreuse font-bold uppercase tracking-wider">{item.label}</span>
+                        <span className="text-[10px] text-bone-dim px-2 py-0.5 rounded bg-obsidian-surface border border-obsidian-border">
+                          {item.badge}
+                        </span>
+                      </div>
+                      <p className="text-sm text-bone-muted font-light leading-relaxed">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* SECTION 09: CONTACT / EDITORIAL CLOSING                                   */}
+          {/* ========================================================================= */}
+          <section id="contact" className="py-24 border-b border-obsidian-border relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                {/* Left Contact Narrative & Links */}
+                <div className="lg:col-span-6 space-y-8">
+                  <div>
+                    <div className="flex items-center gap-3 font-mono-tag text-xs text-chartreuse mb-3">
+                      <span>09</span>
+                      <span className="w-8 h-px bg-chartreuse/40"></span>
+                      <span>GET IN TOUCH</span>
+                    </div>
+                    <h2 className="font-editorial text-4xl sm:text-6xl text-bone leading-tight">
+                      {data.contact.headline}
+                    </h2>
+                    <p className="mt-4 text-bone-muted text-base sm:text-lg font-light max-w-lg leading-relaxed">
+                      {data.contact.subheadline}
+                    </p>
+                  </div>
+
+                  {/* Direct Contact Card */}
+                  <div className="p-6 bg-obsidian-card border border-obsidian-border rounded-sm space-y-4">
+                    <div className="font-mono-tag text-xs text-chartreuse uppercase tracking-wider">
+                      DIRECT INQUIRIES & COLLABORATIONS
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-3 bg-obsidian-surface border border-obsidian-border rounded">
+                      <span className="font-mono-tag text-xs text-bone">{data.meta.socials.email}</span>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(data.meta.socials.email);
+                          showToast("Email copied to clipboard!", "success");
+                        }}
+                        className="px-2.5 py-1 bg-chartreuse text-obsidian font-mono-tag text-xs font-bold rounded hover:bg-white"
+                      >
+                        COPY
+                      </button>
+                    </div>
+
+                    <p className="font-mono-tag text-xs text-bone-muted">
+                      📍 {data.contact.city} · {data.contact.availability}
+                    </p>
+                  </div>
+
+                  {/* Social Profile Grid */}
+                  <div className="space-y-3">
+                    <span className="font-mono-tag text-xs text-bone-dim uppercase block">NETWORK & REPOSITORIES</span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono-tag text-xs">
+                      {[
+                        { label: "LINKEDIN", url: data.meta.socials.linkedin },
+                        { label: "GITHUB", url: data.meta.socials.github },
+                        { label: "KAGGLE", url: data.meta.socials.kaggle },
+                        { label: "LEETCODE", url: data.meta.socials.leetcode }
+                      ].map((s, idx) => (
+                        <a
+                          key={idx}
+                          href={s.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-3 bg-obsidian-surface border border-obsidian-border hover:border-chartreuse text-bone-muted hover:text-chartreuse rounded-sm text-center flex items-center justify-center gap-1.5 transition-all"
+                        >
+                          <span>{s.label}</span>
+                          <Icon name="arrow-up-right" className="w-3.5 h-3.5" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Right Glass Contact Form */}
+                <div className="lg:col-span-6">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      showToast("Inquiry sent successfully! Dakshana will respond shortly.", "success");
+                      e.target.reset();
+                    }}
+                    className="p-8 sm:p-10 bg-obsidian-card border border-obsidian-border rounded-sm space-y-6 shadow-2xl"
+                  >
+                    <h3 className="font-editorial text-2xl text-bone mb-2">
+                      Send an Inquiry or Message
+                    </h3>
+
+                    <div className="space-y-1">
+                      <label className="font-mono-tag text-xs text-bone-muted uppercase block">YOUR NAME</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Dr. Alex Rivera / Maya Patel"
+                        className="w-full px-4 py-3 bg-obsidian-surface border border-obsidian-border rounded text-bone placeholder:text-bone-dim focus:outline-none focus:border-chartreuse text-sm"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-mono-tag text-xs text-bone-muted uppercase block">EMAIL ADDRESS</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="alex@enterprise.org"
+                        className="w-full px-4 py-3 bg-obsidian-surface border border-obsidian-border rounded text-bone placeholder:text-bone-dim focus:outline-none focus:border-chartreuse text-sm"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-mono-tag text-xs text-bone-muted uppercase block">SUBJECT / TOPIC</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Research Collaboration / Venture Discussion"
+                        className="w-full px-4 py-3 bg-obsidian-surface border border-obsidian-border rounded text-bone placeholder:text-bone-dim focus:outline-none focus:border-chartreuse text-sm"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-mono-tag text-xs text-bone-muted uppercase block">MESSAGE</label>
+                      <textarea
+                        rows={4}
+                        required
+                        placeholder="Share your thoughts, opportunity, or problem space..."
+                        className="w-full px-4 py-3 bg-obsidian-surface border border-obsidian-border rounded text-bone placeholder:text-bone-dim focus:outline-none focus:border-chartreuse text-sm"
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full py-4 bg-chartreuse text-obsidian font-mono-tag text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-white transition-all shadow-[0_0_20px_rgba(212,249,51,0.2)] flex items-center justify-center gap-2"
+                    >
+                      <span>TRANSMIT MESSAGE</span>
+                      <Icon name="send" className="w-4 h-4" />
+                    </button>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* FOOTER / COLOPHON                                                         */}
+          {/* ========================================================================= */}
+          <footer className="py-12 border-t border-obsidian-border bg-obsidian text-bone-dim font-mono-tag text-xs">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <span className="text-bone font-medium">{data.meta.name}</span> · 
+                <span className="text-chartreuse ml-1">STUDENT → BUILDER → LEADER</span>
+              </div>
+              <div className="text-center sm:text-right text-[11px]">
+                <span>DESIGNED AS AN INDEPENDENT EDITORIAL OPERATING SPACE</span>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      );
+    }
+
+    // Render React App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
