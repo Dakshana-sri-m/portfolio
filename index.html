@@ -460,6 +460,30 @@
           image: "assets/certificates/river_venture_studios_bootcamp.jpg"
         },
         {
+          id: "cert-iccsam-2026",
+          title: "Certificate of Appreciation — ICCSAM 2026",
+          issuer: "VETIAS in association with APU Malaysia",
+          issueDate: "August 18, 2026",
+          focus: "Network Traffic Type Categorization Using Machine Learning",
+          signatories: "Dr. V.P. Nallaswamy (Principal, VETIAS) & Thiru. S.D. Chandrasekar (Secretary)",
+          description: "Awarded for presenting peer-reviewed research paper on 'Network Traffic Type Categorization Using Machine Learning' at the 3rd International Conference on Computational Sciences and Applied Mathematics.",
+          credentialUrl: "",
+          pdfUrl: "",
+          image: "assets/certificates/iccsam_2026_certificate.jpg"
+        },
+        {
+          id: "cert-merit-scholarship",
+          title: "Mahatma Gandhi Merit Scholarship Certificate",
+          issuer: "Kumaraguru Institutions / KCLAS",
+          issueDate: "March 26, 2026",
+          focus: "Institutional Academic Excellence (2025–2026)",
+          signatories: "Shri Shankar Vanavarayar (President, KI) & Dr. Deepesh (Principal i/c, KCLAS)",
+          description: "Awarded in recognition of outstanding meritorious academic performance in B.Sc. Data Science and multi-faceted contribution to the institutional ecosystem.",
+          credentialUrl: "",
+          pdfUrl: "",
+          image: "assets/certificates/mahatma_gandhi_merit_scholarship.jpg"
+        },
+        {
           id: "cert-amypo",
           title: "Data Analytical Tool Certification",
           issuer: "Amypo",
@@ -1113,17 +1137,76 @@
 
     function ImageLightbox({ src, alt, caption, onClose }) {
       if (!src) return null;
+      const isPdf = src.toLowerCase().endsWith('.pdf');
+
       return (
-        <div className="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
-          <div className="max-w-4xl max-h-[90vh] bg-white p-4 rounded border border-ivory-border shadow-2xl space-y-3" onClick={e => e.stopPropagation()}>
-            <div className="flex justify-between items-center pb-2 border-b border-ivory-border">
-              <span className="font-mono-tag text-xs text-ink-muted">{alt || "Editorial Photography"}</span>
-              <button onClick={onClose} className="p-1 hover:text-emeraldAccent font-mono-tag text-xs font-bold">✕ CLOSE</button>
+        <div className="fixed inset-0 z-50 bg-ink/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6" onClick={onClose}>
+          <div className="w-full max-w-4xl max-h-[92vh] bg-white rounded-sm border border-ivory-border shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 py-3 border-b border-ivory-border bg-ivory-light">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
+                <span className="font-mono-tag text-xs font-bold text-ink truncate max-w-xs sm:max-w-md">{alt || "Official Credential Document"}</span>
+                {isPdf && (
+                  <span className="px-2 py-0.5 bg-emeraldAccent-dim text-emeraldAccent rounded text-[10px] font-mono font-bold">
+                    PDF
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-3">
+                {isPdf && (
+                  <a
+                    href={src}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono-tag text-xs font-semibold text-emeraldAccent hover:underline flex items-center gap-1"
+                  >
+                    <span>NEW TAB</span>
+                    <Icon name="external-link" className="w-3.5 h-3.5" />
+                  </a>
+                )}
+                <button
+                  onClick={onClose}
+                  className="px-3 py-1 bg-white border border-ivory-border hover:bg-emeraldAccent hover:text-white rounded font-mono-tag text-xs font-bold transition-colors"
+                >
+                  ✕ CLOSE
+                </button>
+              </div>
             </div>
-            <div className="max-h-[70vh] overflow-hidden rounded">
-              <img src={src} alt={alt} className="w-full h-full object-contain max-h-[70vh]" />
+
+            <div className="flex-1 p-3 sm:p-4 overflow-auto bg-ivory-card flex items-center justify-center min-h-[50vh] max-h-[76vh]">
+              {isPdf ? (
+                <div className="w-full h-full min-h-[65vh] flex flex-col gap-2">
+                  <iframe
+                    src={`${src}#toolbar=1`}
+                    title={alt || "Certificate PDF Viewer"}
+                    className="w-full h-[62vh] rounded border border-ivory-border bg-white shadow-inner"
+                  />
+                  <div className="text-center pt-1">
+                    <a
+                      href={src}
+                      download
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-emeraldAccent text-white text-xs font-mono-tag font-bold rounded shadow hover:bg-ink transition-colors"
+                    >
+                      <Icon name="download" className="w-3.5 h-3.5" />
+                      <span>DOWNLOAD ORIGINAL PDF</span>
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={src}
+                  alt={alt || "Certificate Document"}
+                  className="w-full h-auto max-h-[74vh] object-contain rounded shadow"
+                />
+              )}
             </div>
-            {caption && <p className="text-xs font-mono-tag text-ink-muted italic">{caption}</p>}
+
+            {caption && (
+              <div className="px-5 py-2.5 bg-white border-t border-ivory-border font-mono-tag text-xs text-ink-muted">
+                <span className="text-emeraldAccent font-bold">INFO: </span>
+                <span>{caption}</span>
+              </div>
+            )}
           </div>
         </div>
       );
@@ -1859,7 +1942,14 @@
                         <span>{c.issueDate}</span>
                       </div>
 
-                      <h4 className="font-editorial text-2xl text-ink mb-2">
+                      <h4
+                        className="font-editorial text-2xl text-ink mb-2 group-hover:text-emeraldAccent transition-colors cursor-pointer"
+                        onClick={() => {
+                          const targetSrc = c.image || c.pdfUrl;
+                          if (targetSrc) setLightboxImage({ src: targetSrc, alt: c.title, caption: `${c.title} · ${c.issuer}` });
+                          else if (c.credentialUrl) window.open(c.credentialUrl, '_blank');
+                        }}
+                      >
                         {c.title}
                       </h4>
 
@@ -1872,12 +1962,32 @@
                           className="mb-4 h-48 w-full rounded overflow-hidden border border-ivory-border cursor-pointer group-hover:shadow-md transition-all relative"
                           onClick={() => setLightboxImage({ src: c.image, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
                         >
-                          <img src={c.image} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <img src={c.image} alt={c.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                           <div className="absolute inset-0 bg-ink/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <span className="px-3 py-1 bg-white/95 rounded text-xs font-mono-tag font-bold shadow text-emeraldAccent">
-                              CLICK TO ZOOM CERTIFICATE
+                              CLICK TO VIEW CERTIFICATE
                             </span>
                           </div>
+                        </div>
+                      )}
+
+                      {c.pdfUrl && (
+                        <div
+                          className="mb-4 p-4 rounded bg-ivory-light border border-ivory-border cursor-pointer hover:border-emeraldAccent transition-all flex items-center justify-between group/pdf"
+                          onClick={() => setLightboxImage({ src: c.pdfUrl, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded bg-white border border-ivory-border flex items-center justify-center text-emeraldAccent shadow-xs group-hover/pdf:bg-emeraldAccent group-hover/pdf:text-white transition-colors">
+                              <Icon name="file-text" className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <span className="font-mono-tag text-xs text-ink font-bold block">OFFICIAL CERTIFICATE PDF</span>
+                              <span className="font-mono-tag text-[10px] text-emeraldAccent">Click to open interactive PDF viewer</span>
+                            </div>
+                          </div>
+                          <span className="px-2.5 py-1 bg-white rounded border border-ivory-border font-mono-tag text-[10px] text-ink font-semibold">
+                            VIEW PDF
+                          </span>
                         </div>
                       )}
 
@@ -1908,12 +2018,12 @@
 
                     <div className="pt-4 border-t border-ivory-border flex flex-wrap items-center justify-between gap-3 font-mono-tag text-xs">
                       <div className="flex flex-wrap items-center gap-2">
-                        {c.image && (
+                        {(c.image || c.pdfUrl) && (
                           <button
-                            onClick={() => setLightboxImage({ src: c.image, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
-                            className="px-3 py-1.5 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1.5 shadow-xs"
+                            onClick={() => setLightboxImage({ src: c.image || c.pdfUrl, alt: c.title, caption: `${c.title} · ${c.issuer}` })}
+                            className="px-3.5 py-1.5 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1.5 shadow-xs transition-colors"
                           >
-                            <Icon name="image" className="w-3.5 h-3.5" />
+                            <Icon name={c.pdfUrl ? "file-text" : "image"} className="w-3.5 h-3.5" />
                             <span>VIEW CERTIFICATE</span>
                           </button>
                         )}
@@ -1922,10 +2032,10 @@
                             href={c.pdfUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-3 py-1.5 bg-emeraldAccent text-white rounded text-xs font-bold hover:bg-ink flex items-center gap-1.5 shadow-xs"
+                            className="px-3 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent hover:text-emeraldAccent rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
                           >
-                            <Icon name="file-text" className="w-3.5 h-3.5" />
-                            <span>VIEW PDF</span>
+                            <Icon name="external-link" className="w-3.5 h-3.5" />
+                            <span>OPEN PDF</span>
                           </a>
                         )}
                         {c.credentialUrl ? (
@@ -1933,7 +2043,7 @@
                             href={c.credentialUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="px-3 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent hover:text-emeraldAccent rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs"
+                            className="px-3 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent hover:text-emeraldAccent rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
                           >
                             <span>VERIFY</span>
                             <Icon name="external-link" className="w-3.5 h-3.5" />
