@@ -1598,18 +1598,7 @@
 
               <div className="flex items-center gap-2.5">
                 
-                {/* Direct Download Resume Button */}
-                <a
-                  href={data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf"}
-                  download="Dakshana_Sri_M_Resume.pdf"
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-emeraldAccent text-white hover:bg-ink shadow-sm hover:shadow transition-all"
-                  title="Download Dakshana Sri M Resume PDF"
-                >
-                  <Icon name="download" className="w-3.5 h-3.5" />
-                  <span className="font-bold">RESUME</span>
-                </a>
-
-                {/* In-App Preview Resume Button */}
+                {/* In-App View Resume Button */}
                 <button
                   onClick={() => {
                     const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
@@ -1619,11 +1608,11 @@
                       caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
                     });
                   }}
-                  className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-white border border-ivory-border hover:border-emeraldAccent hover:text-emeraldAccent text-ink shadow-xs transition-all"
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-white border border-ivory-border hover:border-emeraldAccent hover:text-emeraldAccent text-ink shadow-xs transition-all"
                   title="View Resume / Curriculum Vitae"
                 >
                   <Icon name="file-text" className="w-3.5 h-3.5 text-emeraldAccent" />
-                  <span>VIEW</span>
+                  <span className="font-semibold">VIEW RESUME</span>
                 </button>
 
                 {editMode && (
