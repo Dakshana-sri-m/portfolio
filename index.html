@@ -294,6 +294,7 @@
         location: "Coimbatore / Tamil Nadu, India",
         portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
         avatarAlt: "Dakshana Sri M Editorial Portrait",
+        resumeUrl: "assets/resume/dakshana_sri_m_resume.pdf",
         socials: {
           email: "dakshanasrim1406@gmail.com",
           phone: "8870042836",
@@ -1595,7 +1596,35 @@
                 ))}
               </nav>
 
-              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
+                    setLightboxImage({
+                      src: resume,
+                      alt: "Dakshana Sri M — Curriculum Vitae & Resume",
+                      caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
+                    });
+                  }}
+                  className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tag tracking-wider bg-white border border-ivory-border hover:border-emeraldAccent hover:text-emeraldAccent text-ink shadow-xs transition-all"
+                  title="View Resume / Curriculum Vitae"
+                >
+                  <Icon name="file-text" className="w-3.5 h-3.5 text-emeraldAccent" />
+                  <span>RESUME</span>
+                </button>
+
+                {editMode && (
+                  <label className="cursor-pointer hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono-tag bg-emeraldAccent text-white hover:bg-ink shadow-xs transition-colors" title="Upload Resume PDF">
+                    <Icon name="upload" className="w-3.5 h-3.5" />
+                    <span>📄 UPLOAD RESUME</span>
+                    <input
+                      type="file"
+                      accept=".pdf,image/*,.doc,.docx"
+                      className="hidden"
+                      onChange={(e) => handleFileUpload('meta.resumeUrl', e)}
+                    />
+                  </label>
+                )}
+
                 <button
                   onClick={() => {
                     const next = !editMode;
@@ -1716,19 +1745,34 @@
                     </p>
                   </div>
 
-                  {/* 3 Quick Action Links requested */}
-                  <div className="flex flex-wrap items-center gap-4 pt-2">
+                  {/* Quick Action Links */}
+                  <div className="flex flex-wrap items-center gap-3.5 pt-2">
                     <a
                       href="#project"
-                      className="group inline-flex items-center gap-3 px-6 py-3.5 bg-ink text-ivory font-mono-tag text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-emeraldAccent transition-all shadow-md"
+                      className="group inline-flex items-center gap-2.5 px-5 py-3.5 bg-ink text-ivory font-mono-tag text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-emeraldAccent transition-all shadow-md"
                     >
                       <span>EXPLORE MY WORK</span>
                       <Icon name="arrow-down-right" className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
                     </a>
 
+                    <button
+                      onClick={() => {
+                        const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
+                        setLightboxImage({
+                          src: resume,
+                          alt: "Dakshana Sri M — Curriculum Vitae & Resume",
+                          caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
+                        });
+                      }}
+                      className="inline-flex items-center gap-2.5 px-5 py-3.5 bg-white border border-emeraldAccent/50 text-emeraldAccent font-mono-tag text-xs font-bold tracking-wider uppercase rounded-sm hover:bg-emeraldAccent hover:text-white transition-all shadow-sm"
+                    >
+                      <Icon name="file-text" className="w-4 h-4" />
+                      <span>VIEW RESUME</span>
+                    </button>
+
                     <a
                       href="#protosem"
-                      className="inline-flex items-center gap-3 px-6 py-3.5 bg-white border border-ivory-border text-ink font-mono-tag text-xs font-medium tracking-wider uppercase rounded-sm hover:border-emeraldAccent hover:text-emeraldAccent transition-all shadow-sm"
+                      className="inline-flex items-center gap-2.5 px-5 py-3.5 bg-white border border-ivory-border text-ink font-mono-tag text-xs font-medium tracking-wider uppercase rounded-sm hover:border-emeraldAccent hover:text-emeraldAccent transition-all shadow-sm"
                     >
                       <span>SEE PROTOSEM</span>
                       <Icon name="layers" className="w-4 h-4" />
@@ -1736,7 +1780,7 @@
 
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-3 px-6 py-3.5 bg-emeraldAccent-dim border border-emeraldAccent/30 text-emeraldAccent font-mono-tag text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-emeraldAccent hover:text-white transition-all shadow-xs"
+                      className="inline-flex items-center gap-2.5 px-5 py-3.5 bg-emeraldAccent-dim border border-emeraldAccent/30 text-emeraldAccent font-mono-tag text-xs font-semibold tracking-wider uppercase rounded-sm hover:bg-emeraldAccent hover:text-white transition-all shadow-xs"
                     >
                       <span>LET'S CONNECT</span>
                       <Icon name="send" className="w-4 h-4" />
@@ -1860,6 +1904,24 @@
                           {tag}
                         </span>
                       ))}
+                    </div>
+
+                    <div className="pt-3">
+                      <button
+                        onClick={() => {
+                          const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
+                          setLightboxImage({
+                            src: resume,
+                            alt: "Dakshana Sri M — Curriculum Vitae & Resume",
+                            caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
+                          });
+                        }}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-emeraldAccent/50 hover:border-emeraldAccent text-emeraldAccent font-mono-tag text-xs font-bold rounded shadow-sm hover:bg-emeraldAccent hover:text-white transition-all"
+                      >
+                        <Icon name="file-text" className="w-4 h-4" />
+                        <span>VIEW FULL RESUME / CV</span>
+                        <Icon name="arrow-up-right" className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                   </div>
 
@@ -3297,6 +3359,49 @@
                         >
                           CALL NOW
                         </a>
+                      </div>
+                    </div>
+
+                    {/* Resume / CV Card */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-ivory-light border border-ivory-border rounded gap-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded bg-white border border-ivory-border flex items-center justify-center text-emeraldAccent">
+                          <Icon name="file-text" className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-mono-tag text-ink-dim block font-semibold">CURRICULUM VITAE</span>
+                          <span className="font-mono-tag text-xs text-ink font-bold">
+                            Dakshana_Sri_M_Resume.pdf
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            const resume = data.meta?.resumeUrl || "assets/resume/dakshana_sri_m_resume.pdf";
+                            setLightboxImage({
+                              src: resume,
+                              alt: "Dakshana Sri M — Curriculum Vitae & Resume",
+                              caption: "Dakshana Sri M · Data Science, Prototyping, Research & Leadership Resume"
+                            });
+                          }}
+                          className="px-3.5 py-1.5 bg-emeraldAccent text-white font-mono-tag text-xs font-bold rounded hover:bg-ink shadow-xs transition-colors flex items-center gap-1"
+                        >
+                          <Icon name="file-text" className="w-3.5 h-3.5" />
+                          <span>VIEW RESUME</span>
+                        </button>
+                        {editMode && (
+                          <label className="cursor-pointer px-3.5 py-1.5 bg-white border border-ivory-border text-ink hover:border-emeraldAccent font-mono-tag text-xs font-semibold rounded shadow-xs transition-colors flex items-center gap-1">
+                            <Icon name="upload" className="w-3.5 h-3.5 text-emeraldAccent" />
+                            <span>UPLOAD</span>
+                            <input
+                              type="file"
+                              accept=".pdf,image/*"
+                              className="hidden"
+                              onChange={(e) => handleFileUpload('meta.resumeUrl', e)}
+                            />
+                          </label>
+                        )}
                       </div>
                     </div>
 
