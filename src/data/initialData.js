@@ -8,6 +8,7 @@ export const INITIAL_PORTFOLIO_DATA = {
     headline: "STUDENT → BUILDER → LEADER",
     tagline: "I’m learning to turn curiosity into things worth building.",
     subtagline: "Exploring data, technology, businesses, people and the ideas that connect them.",
+    institution: "B.Sc. Data Science · Kumaraguru College of Liberal Arts and Science (KCLAS)",
     location: "Coimbatore / Tamil Nadu, India",
     portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
     avatarAlt: "Dakshana Sri M Editorial Portrait",
@@ -20,13 +21,6 @@ export const INITIAL_PORTFOLIO_DATA = {
     }
   },
 
-  statusStrip: {
-    currentlyBuilding: "ProtoSem (20-Week Venture Sprint)",
-    currentPhase: "Week 0 & Week 1 completed",
-    interests: "Data Science × Business Operations × Applied ML",
-    direction: "Research + Advanced Computing + Venture Scale"
-  },
-
   liveStatus: {
     currently: "ProtoSem · Week 1 Completed",
     learning: "Data Science + Advanced Computing",
@@ -34,155 +28,220 @@ export const INITIAL_PORTFOLIO_DATA = {
     preparing: "PG Entrance + Research"
   },
 
-  story: {
-    title: "WHERE I COME FROM SHAPES WHAT I BUILD.",
-    subtitle: "An editorial trajectory of curiosity, ground-level business exposure, and the deliberate evolution into a builder and leader.",
-    chapters: [
-      {
-        id: "ch-student",
-        stage: "STUDENT",
-        title: "The Foundations of Curiosity",
-        period: "Academic Foundations",
-        content: "Beginning in computer applications and core computational methods. Rather than stopping at textbook exercises, my curiosity pushed towards understanding how raw data converts into real decisions, and how computation can model complex real-world dynamics.",
-        takeaway: "Curiosity before tools; fundamentals before frameworks.",
-        photo: ""
-      },
-      {
-        id: "ch-datascience",
-        stage: "DATA SCIENCE",
-        title: "From Data Analysis to Systems Intelligence",
-        period: "Analytical Immersion",
-        content: "Deepening capabilities in Python, SQL, statistical modeling, machine learning, and packet-flow traffic classification. Discovering that data is not merely numbers on a dashboard, but the digital footprint of human intent and machine behavior.",
-        takeaway: "Finding signal in noisy environments.",
-        photo: ""
-      },
-      {
-        id: "ch-business",
-        stage: "BUSINESS EXPOSURE",
-        title: "Roots in Enterprise & Ground-Truth Operations",
-        period: "Ground-Level Business Exposure",
-        content: "Witnessing real-world commercial enterprise, manufacturing by-products, and export mechanics firsthand. Learning that technical solutions mean nothing unless they survive the realities of cash flow, supply chains, compliance, and client trust.",
-        takeaway: "Building with an instinct for viability and practical economics.",
-        photo: ""
-      },
-      {
-        id: "ch-builder",
-        stage: "BUILDER",
-        title: "ProtoSem & The Discipline of Shipping",
-        period: "Active Venture Sprint",
-        content: "Transitioning from theoretical assignments to disciplined rapid prototyping in ProtoSem: 20 weeks, 1 core idea, daily sprints from discovery to architectural validation and live demos. Building things that can be tested, critiqued, and iterated.",
-        takeaway: "Execution is the only true validator.",
-        photo: ""
-      },
-      {
-        id: "ch-leader",
-        stage: "LEADER",
-        title: "Convening People, Catalyzing Movements",
-        period: "Leadership & Ecosystem",
-        content: "Directing flagship entrepreneurship initiatives at LEED (E-Summit, Shark Tank, Founder Podcast Series), acting as the bridge between cohort and faculty as Class Representative, and volunteering with Namadhu Pangu for social impact operations.",
-        takeaway: "Leadership is about creating clarity and removing friction for others.",
-        photo: ""
-      },
-      {
-        id: "ch-next",
-        stage: "WHAT'S NEXT?",
-        title: "Venture Building & Postgraduate Research",
-        period: "Near-Term Horizon",
-        content: "Preparing for advanced postgraduate research and venture-scale engineering. Focusing on intersections between high-throughput data systems, intelligent automation, and sustainable industrial by-product monetization.",
-        takeaway: "Continuously widening the scope of impact.",
-        photo: ""
-      }
-    ],
+  about: {
+    whoIAm: {
+      title: "WHO I AM",
+      degree: "B.Sc. Data Science",
+      college: "Kumaraguru College of Liberal Arts and Science",
+      description: "Undergraduate student in Data Science with a deep-seated interest in algorithmic reasoning, venture building, and ecosystem leadership. Rather than remaining within the confines of textbook theory, my focus is on applying computational methods, understanding real enterprise mechanics, and building multidisciplinary systems with people.",
+      tags: ["Data Science", "Machine Learning", "Venture Building", "Applied Research", "Cohort Leadership"]
+    },
+    story: {
+      title: "WHERE I COME FROM SHAPES WHAT I BUILD.",
+      subtitle: "An editorial journey of curiosity, ground-level business exposure, and the deliberate evolution into a builder and leader.",
+      chapters: [
+        {
+          id: "ch-student",
+          stage: "STUDENT",
+          title: "The Foundations of Curiosity",
+          period: "Academic Foundations",
+          content: "Beginning in computer applications and computational foundations. Rather than stopping at textbook exercises, curiosity pushed towards understanding how raw data converts into real decisions, and how computation can model complex real-world dynamics.",
+          takeaway: "Curiosity before tools; fundamentals before frameworks."
+        },
+        {
+          id: "ch-datascience",
+          stage: "DATA SCIENCE",
+          title: "From Data Analysis to Systems Intelligence",
+          period: "Analytical Immersion",
+          content: "Deepening capabilities in Python, SQL, statistical modeling, machine learning, and packet-flow traffic classification. Discovering that data is not merely numbers on a dashboard, but the digital footprint of human intent and machine behavior.",
+          takeaway: "Finding signal in noisy environments."
+        },
+        {
+          id: "ch-business",
+          stage: "BUSINESS EXPOSURE",
+          title: "Roots in Enterprise & Ground-Truth Operations",
+          period: "Ground-Level Business Exposure",
+          content: "Witnessing real-world commercial enterprise, manufacturing by-products, and export mechanics firsthand. Learning that technical solutions mean nothing unless they survive the realities of cash flow, supply chains, compliance, and client trust.",
+          takeaway: "Building with an instinct for viability and practical economics."
+        },
+        {
+          id: "ch-builder",
+          stage: "BUILDER",
+          title: "ProtoSem & The Discipline of Shipping",
+          period: "Active Venture Sprint",
+          content: "Transitioning from theoretical assignments to disciplined rapid prototyping in ProtoSem: 20 weeks, 1 core idea, daily sprints from discovery to architectural validation and live demos. Building things that can be tested, critiqued, and iterated.",
+          takeaway: "Execution is the only true validator."
+        },
+        {
+          id: "ch-leader",
+          stage: "LEADER",
+          title: "Convening People, Catalyzing Movements",
+          period: "Leadership & Ecosystem",
+          content: "Directing flagship entrepreneurship initiatives at LEED (E-Summit, Shark Tank, Founder Podcast Series), acting as the bridge between cohort and faculty as Class Representative, and volunteering with Namadhu Pangu for social impact operations.",
+          takeaway: "Leadership is about creating clarity and removing friction for others."
+        },
+        {
+          id: "ch-next",
+          stage: "WHAT'S NEXT?",
+          title: "Venture Building & Postgraduate Research",
+          period: "Near-Term Horizon",
+          content: "Preparing for advanced postgraduate research and venture-scale engineering. Focusing on intersections between high-throughput data systems, intelligent automation, and sustainable industrial by-product monetization.",
+          takeaway: "Continuously widening the scope of impact."
+        }
+      ]
+    },
     fatherMentorship: {
       title: "THE PEOPLE WHO SHAPED HOW I THINK",
       subtitle: "Someone who influenced the way I see business, responsibility and growth.",
       content: "Growing up around my father's business gave me an unfiltered masterclass in resilience, customer relationships, and operational reality. Long before I studied machine learning algorithms or venture ideation frameworks, I watched how a business navigates uncertainty, manages suppliers, and creates enduring value. That background is why I don't build software in a vacuum — I build with an instinct for practical economics, human trust, and long-term viability.",
-      quote: "Understanding the problem at the ground level is worth a thousand assumptions.",
-      photo: ""
+      quote: "Understanding the problem at the ground level is worth a thousand assumptions."
+    },
+    growthChapters: [
+      {
+        chapterNumber: "01",
+        label: "CHAPTER 01",
+        title: "STUDENT",
+        subtitle: "Learning. Exploring. Finding direction.",
+        description: "Mastering the fundamentals of computer applications, mathematical logic, and data analysis. Moving beyond syllabus boundaries by questioning how computational models operate behind the scenes.",
+        highlights: [
+          "Rigorous academic focus recognized by the Mahatma Gandhi Merit Scholarship",
+          "Deep immersion in Python, SQL, and data analytics tools",
+          "Independent exploration of machine learning and network packet analysis"
+        ]
+      },
+      {
+        chapterNumber: "02",
+        label: "CHAPTER 02",
+        title: "BUILDER",
+        subtitle: "Projects. ProtoSem. Research. Business ideas. Experiments.",
+        description: "Translating theoretical understanding into tangible artifacts: presenting peer-reviewed research at international conferences, diving into 20 weeks of ProtoSem prototyping, and exploring circular economy business models.",
+        highlights: [
+          "Authored & presented international conference paper at ICCSAM 2026",
+          "ProtoSem 20-week venture prototyping immersion (Week 0 & Week 1 completed)",
+          "Formulated feasibility roadmaps for agricultural by-product upcycling & global B2B exports"
+        ]
+      },
+      {
+        chapterNumber: "03",
+        label: "CHAPTER 03",
+        title: "LEADER",
+        subtitle: "Leadership. Events. People. Entrepreneurship. Community.",
+        description: "Taking on institutional responsibilities: directing flagship venture events, facilitating cohort-faculty harmony, and driving social impact operations.",
+        initiatives: [
+          {
+            role: "Director",
+            organization: "LEED (Leadership & Entrepreneurship Development)",
+            highlights: [
+              "Spearheaded flagship E-Summit bringing together founders, investors, and aspiring student innovators",
+              "Organized and executed collegiate Shark Tank pitch competitions",
+              "Hosted and curated the Founder Podcast Series interviewing regional entrepreneurs"
+            ],
+            hasPodcastSoundwave: true
+          },
+          {
+            role: "Class Representative",
+            organization: "Student Body & Department Cohort",
+            highlights: [
+              "Official student-faculty liaison streamlining academic workflows and exam logistics",
+              "Coordinated peer study groups and fostered inclusive cohort collaboration",
+              "Resolved scheduling and administrative friction with empathy and diplomatic clarity"
+            ]
+          },
+          {
+            role: "Volunteer & Community Operator",
+            organization: "Namadhu Pangu",
+            highlights: [
+              "Coordinated community outreach programs and social impact ground operations",
+              "Facilitated volunteer engagement across rural empowerment and educational support drives"
+            ]
+          }
+        ]
+      }
+    ],
+    personality: {
+      type: "ENFJ",
+      typeName: "PROTAGONIST",
+      tagline: "The Collaborative Catalyst & Purpose-Driven Operator",
+      scores: {
+        extraverted: "54%",
+        intuitive: "52%",
+        feeling: "57%",
+        judging: "51%",
+        turbulent: "51%"
+      },
+      traits: [
+        {
+          label: "PEOPLE-FIRST",
+          desc: "Empathetic communication, active listener, brings out the best in team members."
+        },
+        {
+          label: "IDEA-DRIVEN",
+          desc: "Excited by possibilities, seeks conceptual connections across disparate domains."
+        },
+        {
+          label: "COLLABORATIVE",
+          desc: "Believes the highest-performing teams operate on shared trust and radical clarity."
+        },
+        {
+          label: "PURPOSE-ORIENTED",
+          desc: "Builds technology and ventures anchored to real societal and commercial utility."
+        },
+        {
+          label: "ALWAYS REFINING",
+          desc: "Iterates with humble curiosity — treats feedback as essential engineering input."
+        }
+      ]
     }
   },
 
-  build: [
+  certificates: [
     {
-      id: "b-01",
-      category: "BUILDING",
-      title: "Intelligent Network Traffic Type Classifier",
-      why: "Traditional deep packet inspection is compute-heavy and breaks under encrypted flows; statistical flow features enable privacy-preserving, rapid threat categorization.",
-      trying: "Training tree-based and neural classifiers on high-dimensional flow duration, packet length variance, and inter-arrival times.",
-      status: "PROTOTYPE",
-      next: "Packaging into an edge-deployable microservice with real-time PCAP streaming capabilities.",
-      tag: "ML / Network Security",
-      link: "#work",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+      id: "cert-deloitte",
+      title: "Data Analytics Job Simulation",
+      issuer: "Deloitte, issued by Forage",
+      issueDate: "March 28, 2026",
+      verificationCode: "DoK5HySvEFfwT4QnW",
+      userId: "69c60734448ed0424a2a5632",
+      focus: "Data Analysis & Forensic Technology",
+      description: "Completed practical simulation involving real-world forensic data investigations, anomaly pattern recognition, client-ready data communication, and analytical problem-solving.",
+      credentialUrl: "https://www.theforage.com/simulations/deloitte/data-analytics",
+      pdfUrl: "",
+      image: ""
     },
     {
-      id: "b-02",
-      category: "BUILDING",
-      title: "ProtoSem Sprint: 20-Week Prototype Engine",
-      why: "Bridging the gap between academic theory and venture-ready technology requires daily execution discipline.",
-      trying: "Progressing through a structured 20-week venture build: Completed Week 0 (Foundations) and Week 1 (Discovery & Needs Analysis).",
-      status: "TESTING",
-      next: "Refining product requirement documentation and technical architecture wireframes.",
-      tag: "ProtoSem / Venture",
-      link: "#protosem",
-      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80"
+      id: "cert-simplilearn",
+      title: "Introduction to MS Excel",
+      issuer: "Simplilearn SkillUp, powered by Microsoft",
+      issueDate: "July 5, 2026",
+      verificationCode: "10432422",
+      focus: "Data Preparation, Formulas, Analytical Worksheets",
+      description: "Mastered fundamental to intermediate spreadsheet analytics, complex lookup formulas, dynamic pivot modeling, and automated summary reports for business operations.",
+      credentialUrl: "https://www.simplilearn.com/skillup-certificate",
+      pdfUrl: "",
+      image: ""
     },
     {
-      id: "b-04",
-      category: "EXPLORING",
-      title: "Cross-Border B2B Export Intelligence Playbook",
-      why: "Small-to-mid manufacturing enterprises face high discovery barriers when attempting direct cross-border trade.",
-      trying: "Synthesizing trade compliance, tariff structures, and logistics roadmaps for regional manufacturing exports.",
-      status: "EXPLORING",
-      next: "Validating tariff estimation checklists with export consultants.",
-      tag: "Trade / Supply Chain",
-      link: "#work",
-      image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80"
-    }
-  ],
-
-  projects: [
-    {
-      id: "traffic-ml",
-      title: "Network Traffic Type Categorization & Threat Anomaly Detection",
-      badge: "RESEARCH & MACHINE LEARNING",
-      summary: "Machine learning models analyzing network traffic flow statistics to accurately categorize traffic types and detect anomalous packets without decrypting payload content.",
-      question: "Can network traffic types and emerging threat anomalies be accurately identified solely through statistical flow attributes (packet intervals, size distributions, burst ratios) without payload inspection?",
-      problem: "Payload-based deep packet inspection (DPI) introduces massive computational latency and violates data privacy standards, especially as encryption protocols (TLS 1.3) obscure header payloads. Network defenders need fast, privacy-preserving classification.",
-      approach: "Extracted directional flow metrics, inter-arrival time standard deviations, and protocol burst parameters. Preprocessed and normalized multi-class traffic distributions, benchmarked Random Forests, Gradient Boosted Trees, and neural classifiers against realistic network datasets.",
-      tools: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Network Flow Analysis", "Matplotlib", "Seaborn"],
-      result: "Demonstrated high multi-class precision in distinguishing streaming, bulk transfer, interactive, and anomalous packet sequences. The findings formed the basis of an international peer-reviewed paper presented at ICCSAM 2026.",
-      learnings: "Feature engineering on temporal flow variance carries higher discriminatory signal than raw packet volume; handling class imbalance is critical for rare anomaly detection.",
-      nextStep: "Exploring real-time lightweight inference pipelines deployable on resource-constrained gateway hardware.",
-      links: {
-        paper: "#proof",
-        presentation: "#proof",
-        github: "",
-        demo: "",
-        dataset: ""
-      },
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
+      id: "cert-river-bootcamp",
+      title: "Two-Day Entrepreneurship & Venture Building Bootcamp",
+      issuer: "Kumaraguru Institutions × River Venture Studios, Singapore",
+      issueDate: "February 9–10, 2026",
+      signatories: "Dr. Viveka Kalidasan & Dr. D. Saravanan",
+      focus: "Global Venture Ideation, Scalability & Market Validation",
+      description: "Intensive venture design sprint covering venture capital evaluation criteria, customer discovery methodologies, unit economics validation, and cross-border commercialization strategies.",
+      credentialUrl: "",
+      pdfUrl: "",
+      image: ""
     },
     {
-      id: "export-expansion",
-      title: "Family Enterprise Global Export Expansion Roadmap",
-      badge: "BUSINESS STRATEGY & LOGISTICS",
-      summary: "Strategic market analysis and cross-border supply chain assessment exploring scalable B2B export roadmaps for regional manufacturing operations.",
-      question: "How can a regionally grounded manufacturing enterprise systematically transition to direct international B2B export markets while managing working capital risk?",
-      problem: "Traditional manufacturing enterprises often rely on intermediaries who capture substantial margins, while direct export requires mastering complex trade compliance, incoterms, quality certifications, and maritime freight scheduling.",
-      approach: "Conducted structured target market segmentation across Southeast Asia and Middle Eastern corridors. Mapped end-to-end export documentation workflows (Letter of Credit, Certificate of Origin, Phytosanitary / Quality clearances) and calculated landed cost models under varying shipping routes.",
-      tools: ["Trade Analytics", "Supply Chain Modeling", "MS Excel Advanced Worksheets", "Financial Modeling", "Market Research"],
-      result: "Synthesized a structured, repeatable market-entry evaluation framework and risk matrix for international buyer engagement.",
-      learnings: "Export success is 30% product quality and 70% operational discipline in logistics coordination, customs compliance, and contract terms.",
-      nextStep: "Developing standardized buyer evaluation scorecard templates for upcoming trade delegation inquiries.",
-      links: {
-        paper: "",
-        presentation: "",
-        github: "",
-        demo: "",
-        dataset: ""
-      },
-      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
+      id: "cert-amypo",
+      title: "Data Analytical Tool Certification",
+      issuer: "Amypo",
+      issueDate: "2026",
+      focus: "Analytical Tools, Querying & Visual Analytics",
+      description: "Hands-on certification in SQL querying, dataset transformation, analytical dashboarding, and multi-dimensional reporting.",
+      credentialUrl: "",
+      pdfUrl: "",
+      image: ""
     }
   ],
 
@@ -431,59 +490,187 @@ export const INITIAL_PORTFOLIO_DATA = {
     ]
   },
 
-  proof: {
-    certifications: [
+  skills: {
+    title: "CAPABILITY, NOT CHECKBOXES.",
+    subtitle: "A dynamic capability landscape built through practical execution, real-world ventures, and continuous experimentation.",
+    clusters: [
       {
-        id: "cert-deloitte",
-        title: "Data Analytics Job Simulation",
-        issuer: "Deloitte, issued by Forage",
-        issueDate: "March 28, 2026",
-        verificationCode: "DoK5HySvEFfwT4QnW",
-        userId: "69c60734448ed0424a2a5632",
-        focus: "Data Analysis & Forensic Technology",
-        description: "Completed practical simulation involving real-world forensic data investigations, anomaly pattern recognition, client-ready data communication, and analytical problem-solving.",
-        credentialUrl: "https://www.theforage.com/simulations/deloitte/data-analytics",
-        pdfUrl: "",
-        image: ""
+        category: "TECHNICAL",
+        description: "Algorithmic thinking, programming & security intelligence",
+        skills: [
+          { name: "Python", context: "Data manipulation, ML modeling, PCAP parsing" },
+          { name: "SQL", context: "Relational querying, schema aggregation" },
+          { name: "Machine Learning", context: "Classification models, feature correlation" },
+          { name: "Network Traffic Analysis", context: "Packet flow characteristics, anomaly detection" },
+          { name: "Forensic Technology", context: "Deloitte forensic simulation methodologies" }
+        ]
       },
       {
-        id: "cert-simplilearn",
-        title: "Introduction to MS Excel",
-        issuer: "Simplilearn SkillUp, powered by Microsoft",
-        issueDate: "July 5, 2026",
-        verificationCode: "10432422",
-        focus: "Data Preparation, Formulas, Analytical Worksheets",
-        description: "Mastered fundamental to intermediate spreadsheet analytics, complex lookup formulas, dynamic pivot modeling, and automated summary reports for business operations.",
-        credentialUrl: "https://www.simplilearn.com/skillup-certificate",
-        pdfUrl: "",
-        image: ""
+        category: "DATA & ANALYTICS",
+        description: "Statistical modeling & exploratory dashboarding",
+        skills: [
+          { name: "Data Analytics", context: "Pattern discovery, variance modeling" },
+          { name: "MS Excel", context: "Advanced formulas, financial worksheets" },
+          { name: "Power BI", context: "Interactive business intelligence views" },
+          { name: "Tableau", context: "Visual analytics & distributions" },
+          { name: "BigQuery", context: "Large-scale dataset querying" }
+        ]
       },
       {
-        id: "cert-river-bootcamp",
-        title: "Two-Day Entrepreneurship & Venture Building Bootcamp",
-        issuer: "Kumaraguru Institutions & River Venture Studios, Singapore",
-        issueDate: "February 9–10, 2026",
-        signatories: "Dr. Viveka Kalidasan & Dr. D. Saravanan",
-        focus: "Global Venture Ideation, Scalability & Market Validation",
-        description: "Intensive venture design sprint covering venture capital evaluation criteria, customer discovery methodologies, unit economics validation, and cross-border commercialization strategies.",
-        credentialUrl: "",
-        pdfUrl: "",
-        image: ""
+        category: "BUILDING",
+        description: "Venture prototyping & disciplined rapid iteration",
+        skills: [
+          { name: "Rapid Prototyping", context: "ProtoSem weekly build sprints" },
+          { name: "Experimentation", context: "Hypothesis testing, metric sanity checks" },
+          { name: "Venture Building", context: "River Venture Studios Bootcamp ideation" }
+        ]
       },
       {
-        id: "cert-amypo",
-        title: "Data Analytical Tool Certification",
-        issuer: "Amypo",
-        issueDate: "2026",
-        focus: "Analytical Tools, Querying & Visual Analytics",
-        description: "Hands-on certification in SQL querying, dataset transformation, analytical dashboarding, and multi-dimensional reporting.",
-        credentialUrl: "",
-        pdfUrl: "",
-        image: ""
+        category: "LEADERSHIP",
+        description: "Ecosystem orchestration & strategic initiatives",
+        skills: [
+          { name: "Strategic Venture Incubation", context: "LEED director leadership" },
+          { name: "Event Logistics", context: "E-Summit & Shark Tank organization" },
+          { name: "Pitch Deck Evaluation", context: "Student founder jury facilitation" },
+          { name: "Live Moderation", context: "Panel hosting & stage coordination" },
+          { name: "Podcasting", context: "Founder Podcast Series curation" }
+        ]
+      },
+      {
+        category: "PEOPLE",
+        description: "Human empathy & stakeholder coordination",
+        skills: [
+          { name: "Conflict Resolution", context: "Cohort and team negotiation" },
+          { name: "Faculty-Student Liaison", context: "Class Representative responsibilities" },
+          { name: "Cross-Functional Coordination", context: "Namadhu Pangu volunteer operations" },
+          { name: "Social Empathy", context: "Community outreach initiatives" }
+        ]
       }
-    ],
+    ]
+  },
 
-    achievements: [
+  projects: [
+    {
+      id: "traffic-ml",
+      title: "Network Traffic Type Categorization & Threat Anomaly Detection",
+      badge: "RESEARCH & MACHINE LEARNING",
+      summary: "Machine learning models analyzing network traffic flow statistics to accurately categorize traffic types and detect anomalous packets without decrypting payload content.",
+      problem: "Payload-based deep packet inspection (DPI) introduces massive computational latency and violates data privacy standards, especially as encryption protocols (TLS 1.3) obscure header payloads.",
+      idea: "Use directional flow intervals, packet length variance, and burst ratios as statistical behavioral signatures to classify network traffic with zero payload decryption.",
+      approach: "Extracted directional flow metrics, preprocessed and normalized multi-class traffic distributions, benchmarked Random Forests, Gradient Boosted Trees, and neural classifiers against realistic network datasets.",
+      tools: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Network Flow Analysis", "Matplotlib", "Seaborn"],
+      result: "Demonstrated high multi-class precision in distinguishing streaming, bulk transfer, interactive, and anomalous packet sequences. Published and presented @ ICCSAM 2026.",
+      learnings: "Feature engineering on temporal flow variance carries higher discriminatory signal than raw packet volume; handling class imbalance is critical for rare anomaly detection.",
+      status: "Conference Paper Accepted & Presented",
+      nextStep: "Exploring real-time lightweight inference pipelines deployable on resource-constrained gateway hardware.",
+      links: {
+        paper: "#achievements",
+        presentation: "#achievements",
+        github: "",
+        demo: "",
+        dataset: ""
+      },
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "export-expansion",
+      title: "Family Enterprise Global Export Expansion Roadmap",
+      badge: "BUSINESS STRATEGY & LOGISTICS",
+      summary: "Strategic market analysis and cross-border supply chain assessment exploring scalable B2B export roadmaps for regional manufacturing operations.",
+      problem: "Traditional manufacturing enterprises often rely on intermediaries who capture substantial margins, while direct export requires mastering complex trade compliance, incoterms, quality certifications, and maritime freight scheduling.",
+      idea: "Systematically transition a regionally grounded enterprise to direct international B2B export markets while managing working capital risk.",
+      approach: "Conducted structured target market segmentation across Southeast Asia and Middle Eastern corridors. Mapped end-to-end export documentation workflows and calculated landed cost models under varying shipping routes.",
+      tools: ["Trade Analytics", "Supply Chain Modeling", "MS Excel Advanced Worksheets", "Financial Modeling", "Market Research"],
+      result: "Synthesized a structured, repeatable market-entry evaluation framework and risk matrix for international buyer engagement.",
+      learnings: "Export success is 30% product quality and 70% operational discipline in logistics coordination, customs compliance, and contract terms.",
+      status: "Strategy & Evaluation Playbook Active",
+      nextStep: "Developing standardized buyer evaluation scorecard templates for upcoming trade delegation inquiries.",
+      links: {
+        paper: "",
+        presentation: "",
+        github: "",
+        demo: "",
+        dataset: ""
+      },
+      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      id: "circular-economy",
+      title: "Circular Economy & Industrial By-Product Monetization",
+      badge: "VENTURE FEASIBILITY & SUSTAINABILITY",
+      summary: "Investigating commercial upcycling pathways and B2B secondary material brokerage for agricultural and industrial processing waste streams.",
+      problem: "Processing residues often retain high chemical and structural value, but decentralized generation and rapid spoilage cause millions of metric tons of valuable material to be underutilized or dumped.",
+      idea: "Systematically characterize, preserve, and route industrial residues to high-value industrial buyers rather than disposing of them as low-grade biomass.",
+      approach: "Surveyed processing volume dynamics, moisture control methods, and industrial application verticals (biocomposites, specialized soil conditioning, industrial bio-energy). Modeled collection logistics and aggregation hub feasibility.",
+      tools: ["Venture Sizing", "Process Economics", "Life Cycle Assessment Principles", "Secondary Market Research"],
+      result: "Drafted a scalable aggregation and quality-grading blueprint targeting regional processing clusters.",
+      learnings: "Logistical density and shelf-life stabilization dictate the economic boundary of by-product upcycling more than raw chemical yield.",
+      status: "Feasibility Modeling in Progress",
+      nextStep: "Refining pilot aggregation cost models with local processing operators.",
+      links: {
+        paper: "",
+        presentation: "",
+        github: "",
+        demo: "",
+        dataset: ""
+      },
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80"
+    }
+  ],
+
+  build: [
+    {
+      id: "b-01",
+      category: "BUILDING NOW",
+      title: "Intelligent Network Traffic Type Classifier",
+      why: "Traditional deep packet inspection is compute-heavy and breaks under encrypted flows; statistical flow features enable privacy-preserving, rapid threat categorization.",
+      trying: "Training tree-based and neural classifiers on high-dimensional flow duration, packet length variance, and inter-arrival times.",
+      stage: "PROTOTYPE",
+      next: "Packaging into an edge-deployable microservice with real-time PCAP streaming capabilities.",
+      tag: "ML / Network Security",
+      link: "#project",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "b-02",
+      category: "BUILDING NOW",
+      title: "ProtoSem Sprint: 20-Week Prototype Engine",
+      why: "Bridging the gap between academic theory and venture-ready technology requires daily execution discipline.",
+      trying: "Progressing through a structured 20-week venture build: Completed Week 0 (Foundations) and Week 1 (Discovery & Needs Analysis).",
+      stage: "TESTING",
+      next: "Refining product requirement documentation and technical architecture wireframes.",
+      tag: "ProtoSem / Venture",
+      link: "#protosem",
+      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "b-03",
+      category: "EXPLORING",
+      title: "Cross-Border B2B Export Intelligence Playbook",
+      why: "Small-to-mid manufacturing enterprises face high discovery barriers when attempting direct cross-border trade.",
+      trying: "Synthesizing trade compliance, tariff structures, and logistics roadmaps for regional manufacturing exports.",
+      stage: "EXPLORING",
+      next: "Validating tariff estimation checklists with export consultants.",
+      tag: "Trade / Supply Chain",
+      link: "#project",
+      image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "b-04",
+      category: "PARKED",
+      title: "Campus Peer Mentorship Micro-Network",
+      why: "Informal peer tutoring improves retention but suffers from coordination friction.",
+      trying: "Algorithmic matchmaking for undergraduate peer study pods based on complementary skill gaps.",
+      stage: "PAUSED",
+      next: "Will revisit if automated scheduling bots can be integrated with institutional LMS.",
+      tag: "EdTech / Community",
+      link: "",
+      image: ""
+    }
+  ],
+
+  achievements: {
+    scholarships: [
       {
         id: "achieve-merit-scholarship",
         title: "Mahatma Gandhi Merit Scholarship",
@@ -496,7 +683,6 @@ export const INITIAL_PORTFOLIO_DATA = {
         image: ""
       }
     ],
-
     research: [
       {
         id: "research-iccsam-2026",
@@ -510,178 +696,6 @@ export const INITIAL_PORTFOLIO_DATA = {
         paperUrl: "",
         abstractUrl: "",
         status: "Presented & Peer-Reviewed"
-      }
-    ]
-  },
-
-  capabilities: {
-    title: "CAPABILITY, NOT CHECKBOXES.",
-    subtitle: "A dynamic capability landscape built through practical execution, real-world ventures, and continuous experimentation.",
-    clusters: [
-      {
-        category: "COMPUTE",
-        description: "Algorithmic thinking & programming foundations",
-        skills: ["Python", "SQL", "Machine Learning", "Algorithmic Logic", "Data Structures"]
-      },
-      {
-        category: "ANALYZE",
-        description: "Statistical modeling & pattern discovery",
-        skills: ["Statistics", "Data Analytics", "Network Traffic Analysis", "Forensic Technology", "Feature Engineering"]
-      },
-      {
-        category: "VISUALIZE",
-        description: "Translating data into actionable dashboards",
-        skills: ["MS Excel", "Power BI", "Tableau", "BigQuery", "Exploratory Data Analysis"]
-      },
-      {
-        category: "BUILD",
-        description: "Product prototyping & rapid validation",
-        skills: ["Rapid Prototyping", "Venture Building", "Experimentation", "System Architecture", "ProtoSem Sprints"]
-      },
-      {
-        category: "LEAD",
-        description: "Ecosystem orchestration & strategic initiatives",
-        skills: ["Strategic Venture Incubation", "Event Logistics", "Pitch Deck Evaluation", "Live Moderation", "Podcasting & Media"]
-      },
-      {
-        category: "CONNECT",
-        description: "Human empathy & stakeholder coordination",
-        skills: ["Conflict Resolution", "Faculty-Student Liaison", "Cross-Functional Coordination", "Social Empathy", "Cohort Management"]
-      }
-    ]
-  },
-
-  growth: {
-    title: "MY PERSONAL GROWTH",
-    subtitle: "FROM STUDENT → BUILDER → LEADER",
-    chapters: [
-      {
-        chapterNumber: "01",
-        label: "CHAPTER 01",
-        title: "STUDENT",
-        subtitle: "Learning. Exploring. Finding direction.",
-        description: "Mastering the fundamentals of computer applications, mathematical logic, and data analysis. Moving beyond syllabus boundaries by questioning how computational models operate behind the scenes.",
-        highlights: [
-          "Rigorous academic focus recognized by the Mahatma Gandhi Merit Scholarship",
-          "Deep immersion in Python, SQL, and data analytics tools",
-          "Independent exploration of machine learning and network packet analysis"
-        ]
-      },
-      {
-        chapterNumber: "02",
-        label: "CHAPTER 02",
-        title: "BUILDER",
-        subtitle: "Projects. ProtoSem. Research. Business ideas. Experiments.",
-        description: "Translating theoretical understanding into tangible artifacts: presenting peer-reviewed research at international conferences, diving into 20 weeks of ProtoSem prototyping, and exploring circular economy business models.",
-        highlights: [
-          "Authored & presented international conference paper at ICCSAM 2026",
-          "ProtoSem 20-week venture prototyping immersion (Week 0 & Week 1 completed)",
-          "Formulated feasibility roadmaps for agricultural by-product upcycling & global B2B exports"
-        ]
-      },
-      {
-        chapterNumber: "03",
-        label: "CHAPTER 03",
-        title: "LEADER",
-        subtitle: "Leadership. Events. People. Entrepreneurship. Community.",
-        description: "Taking on institutional responsibilities: directing flagship venture events, facilitating cohort-faculty harmony, and driving social impact operations.",
-        initiatives: [
-          {
-            role: "Director",
-            organization: "LEED (Leadership & Entrepreneurship Development)",
-            highlights: [
-              "Spearheaded flagship E-Summit bringing together founders, investors, and aspiring student innovators",
-              "Organized and executed collegiate Shark Tank pitch competitions",
-              "Hosted and curated the Founder Podcast Series interviewing regional entrepreneurs"
-            ],
-            hasPodcastSoundwave: true
-          },
-          {
-            role: "Class Representative",
-            organization: "Student Body & Department Cohort",
-            highlights: [
-              "Official student-faculty liaison streamlining academic workflows and exam logistics",
-              "Coordinated peer study groups and fostered inclusive cohort collaboration",
-              "Resolved scheduling and administrative friction with empathy and diplomatic clarity"
-            ]
-          },
-          {
-            role: "Volunteer & Community Operator",
-            organization: "Namadhu Pangu",
-            highlights: [
-              "Coordinated community outreach programs and social impact ground operations",
-              "Facilitated volunteer engagement across rural empowerment and educational support drives"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-
-  personality: {
-    type: "ENFJ",
-    typeName: "PROTAGONIST",
-    tagline: "The Collaborative Catalyst & Purpose-Driven Operator",
-    scores: {
-      extraverted: "54%",
-      intuitive: "52%",
-      feeling: "57%",
-      judging: "51%",
-      turbulent: "51%"
-    },
-    traits: [
-      {
-        label: "PEOPLE-FIRST",
-        desc: "Empathetic communication, active listener, brings out the best in team members."
-      },
-      {
-        label: "IDEA-DRIVEN",
-        desc: "Excited by possibilities, seeks conceptual connections across disparate domains."
-      },
-      {
-        label: "COLLABORATIVE",
-        desc: "Believes the highest-performing teams operate on shared trust and radical clarity."
-      },
-      {
-        label: "PURPOSE-ORIENTED",
-        desc: "Builds technology and ventures anchored to real societal and commercial utility."
-      },
-      {
-        label: "ALWAYS REFINING",
-        desc: "Iterates with humble curiosity — treats feedback as essential engineering input."
-      }
-    ],
-    image: ""
-  },
-
-  now: {
-    title: "RIGHT NOW",
-    subtitle: "A living snapshot of current focus areas, active learning, and near-term horizons.",
-    items: [
-      {
-        badge: "ACTIVE IMMERSION",
-        label: "BUILDING",
-        detail: "ProtoSem (20-Week Prototype Engine) — Completed Week 0 & Week 1, entering deeper technical sprints."
-      },
-      {
-        badge: "TECHNICAL DEPTH",
-        label: "LEARNING",
-        detail: "Data Science + Advanced Computing, statistical modeling, and high-throughput data pipelines."
-      },
-      {
-        badge: "VENTURE EXPERIMENTS",
-        label: "EXPLORING",
-        detail: "Technology + Business + Venture Ideas, circular economy by-product utilization, and cross-border trade."
-      },
-      {
-        badge: "ACADEMIC HORIZON",
-        label: "PREPARING",
-        detail: "PG Entrance + Research proposals in computational systems."
-      },
-      {
-        badge: "STRATEGIC VISION",
-        label: "THINKING ABOUT",
-        detail: "The next chapter after graduation: turning curiosity and operational discipline into high-impact ventures."
       }
     ]
   },
