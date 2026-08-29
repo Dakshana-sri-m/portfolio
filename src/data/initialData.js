@@ -323,11 +323,101 @@ export const INITIAL_PORTFOLIO_DATA = {
         introQuote: "Five days. Different disciplines. One room.",
         introText: "Students from different academic backgrounds initially entered with hesitation and ended the week as a deeply connected, collaborative team ready to build.",
         blog: {
-          title: "From Strangers to Innovators: Reflections on Week 0 at ProtoSem",
+          title: "From Strangers to Innovators: Reflections on Week 0 at Protosem",
           date: "August 2026",
-          summary: "A comprehensive retrospective detailing the 5-day journey from individual uncertainty to high-velocity collaborative prototyping.",
+          readTime: "5 min read",
+          author: "Dakshana Sri M",
+          coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+          summary: "What happens when you bring students from Arts, Engineering, Computer Science, and distinct academic backgrounds into a single room and ask them to build together? Here is the story of our first five days at Protosem, navigating from strangers to collaborators.",
           externalUrl: "",
-          tags: ["ProtoSem", "Retrospective", "Venture Building"]
+          tags: ["ProtoSem", "Retrospective", "Venture Building", "Rapid Prototyping"],
+          highlights: [
+            "Connection and keen observation are the true starting points of meaningful problem-solving. You can’t solve a problem you haven’t genuinely listened to.",
+            "Embracing cognitive diversity means recognizing that disagreements aren’t roadblocks—they are different perspectives looking at the same reality.",
+            "We stopped being separate people sitting at the same table and became a team that builds, tests, and iterates together.",
+            "Don’t use technology just because it’s new—use the right tool with deliberate intention to solve the right problem.",
+            "Great ventures aren’t born in isolation; they are built when empathy, disciplined execution, and a clear purpose meet real market needs."
+          ],
+          content: `What happens when you bring students from Arts, Engineering, Computer Science, and distinct academic backgrounds into a single room and ask them to build together?
+
+On Monday morning, the answer was hesitation, quiet side-conversations, and an unspoken question: *How are we going to work across completely different ways of thinking?*
+
+By Friday afternoon, the room looked completely different. We were no longer isolated individuals defending our discipline’s way of doing things—we were a connected, agile team. Here is the story of our first five days at Protosem, how we navigated the transition from strangers to collaborators, and the lessons that reshaped our perspective along the way.
+
+---
+
+## The Journey: Day by Day
+
+### Day 1: Breaking Barriers & Seeing Problems
+*Theme: Connect & Observe*
+
+We kicked off Week 1 with 360° self-introductions and a high-energy Rock–Paper–Scissors networking challenge. While it started as a lighthearted icebreaker, it accomplished something crucial: it broke down the invisible walls we usually keep up in academic settings and pushed us out of our comfort zones.
+
+Once the hesitation melted, we tackled our first major exercise: identifying real-world problems from our lived experiences that society often overlooks.
+
+> **Key Takeaway:** Connection and keen observation are the true starting points of meaningful problem-solving. You can’t solve a problem you haven’t genuinely listened to.
+
+---
+
+### Day 2: Understanding Ourselves Through Stories
+*Theme: Discover & Reflect*
+
+Day 2 moved inward. We started by exploring the 16 Personalities framework, identifying our cognitive styles—from Protagonists and Advocates to Commanders and Analysts.
+
+Next, we explored Gen Z web stories and comics, each selecting and presenting a narrative that resonated with our personal or academic journeys. Listening to everyone explain why a particular story struck a chord with them revealed something profound: diversity isn’t just about different college majors or resumes; it’s about the unique lenses through which people perceive, feel, and interpret the world.
+
+> **Key Takeaway:** Embracing cognitive diversity means recognizing that disagreements aren’t roadblocks—they are different perspectives looking at the same reality.
+
+---
+
+### Day 3: Becoming a Team & Hands-on Prototyping
+*Theme: Collaborate & Build*
+
+Midweek brought the formation of our official Beta Teams. To break any lingering awkwardness, an Among Us-inspired deduction challenge tested our communication, active listening, and intuition under pressure.
+
+Then came the classic Spaghetti Tower Challenge. Armed only with fragile dry spaghetti sticks, masking tape, string, and a single marshmallow destined for the top, the clock started ticking. We experienced early structural collapses, rapid pivots, and constant negotiation of ideas.
+
+> **Key Takeaway:** We stopped being separate people sitting at the same table and became a team that builds, tests, and iterates together.
+
+---
+
+### Day 4: Exploring AI & Purposeful Technology
+*Theme: Explore & Elevate*
+
+Technology is only as effective as the intention behind it. On Day 4, a TED-style talk on modern AI workflows challenged us to move past generic prompting and view AI tools as specialized instruments for specific tasks.
+
+We explored how tailoring and personalizing AI frameworks can amplify brainstorming, research, and rapid prototyping without replacing human critical thinking.
+
+> **Key Takeaway:** Don't use technology just because it's new—use the right tool with deliberate intention to solve the right problem.
+
+---
+
+### Day 5: The Spark of Entrepreneurship
+*Theme: Ignite & Envision*
+
+We concluded our first week with the official inauguration of the Youth Entrepreneurship Program (YEP). The highlight of the day was an insightful address by Mr. M. Ramakrishnan, Founder & MD/CEO of Thulasi Pharmacies.
+
+Hearing his real-world journey of building a customer-centric enterprise from the ground up grounded everything we had learned all week. It connected our classroom exercises to genuine societal impact, sustainable business practices, and long-term resilience.
+
+> **Key Takeaway:** Great ventures aren’t born in isolation; they are built when empathy, disciplined execution, and a clear purpose meet real market needs.
+
+---
+
+## 5 Core Lessons We’re Taking Forward
+
+1. **Connection First:** Real collaboration only begins after you cultivate trust and openness.
+2. **Empathy-Driven Problem Identification:** The most impactful solutions come from deeply observing daily friction points.
+3. **Cognitive Synergy:** Diverse personalities and backgrounds are a superpower when aligned toward a shared goal.
+4. **Iterative Action Over Perfection:** Building messy prototypes teaches you faster than endless theoretical debates.
+5. **Intentional Innovation:** Whether leveraging advanced AI or designing a business model, purpose must always lead technology.
+
+---
+
+## Looking Ahead
+
+Week 0 at Protosem proved that interdisciplinary learning is more than an academic buzzword—it is a mindset. As we transition into the next phase of deep-dive problem solving and prototyping, we carry forward a shared identity, a strong foundation of trust, and the confidence to create together.
+
+> *"Protosem didn’t just teach us new concepts. It taught us how different people can connect, think differently, and build together."*`
         },
         days: [
           {
@@ -429,9 +519,36 @@ export const INITIAL_PORTFOLIO_DATA = {
         blog: {
           title: "Sprint 01 Retrospective: Baseline Data Pipelines & User Needs",
           date: "August 2026",
-          summary: "Documenting early user interviews and data transformation architecture.",
+          readTime: "5 min read",
+          author: "Dakshana Sri M",
+          coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+          summary: "Documenting early user interviews, manual workaround discoveries, and modular Python data transformation architecture.",
           externalUrl: "",
-          tags: ["ProtoSem", "Data Engineering", "Needs Analysis"]
+          tags: ["ProtoSem", "Data Engineering", "Needs Analysis", "Systems Architecture"],
+          highlights: [
+            "User shadowing showed 60% of data errors stemmed from manual Excel conversions.",
+            "Enforced strict JSON Schema validation boundaries prior to pipeline scripting.",
+            "Vectorized data transformation routines achieved 40x speedups over iterative scripts.",
+            "Delivered working sprint prototype and benchmark metrics during mentor demo day."
+          ],
+          content: `## Framing the Real Problem: Look at Workarounds, Not Feature Requests
+
+During Week 1 of ProtoSem, our team shifted focus from high-level vision to meticulous ground-truth discovery. When speaking with domain operators, we quickly realized that asking users "What feature do you want?" produces superficial answers. Observing their actual screens revealed the real gold: endless workarounds, duplicate spreadsheet entries, and broken data handoffs.
+
+### The Hidden Bottleneck
+Over 60% of data hygiene inconsistencies originated from manual file re-formatting between legacy ERP tools and analysis dashboards. Operators were spending 3 to 4 hours every sprint fixing corrupted delimiter types.
+
+### Architectural Decisions
+Instead of jumping directly to training statistical models, we dedicated Day 2 to strict architectural boundary definitions:
+1. **Schema Validation First:** Implemented strict JSON Schema validation at the ingestion boundary to reject malformed payloads immediately.
+2. **Vectorized Transformations:** Replaced iterative loops with NumPy and Pandas vectorized operations, cutting batch parsing latency by 40x.
+3. **Modular Pipelines:** Decoupled the ingestion layer from the transformation engine, enabling independent unit testing and failure isolation.
+
+### Mentor Feedback & Demo Iterations
+At the Friday Sprint Demo, presenting concrete pipeline benchmarks and user workflow diagrams won enthusiastic mentor validation. The key advice was to maintain this level of architectural hygiene as we progress into model inference.
+
+### Sprint 02 Trajectory
+Week 2 will focus on end-to-end integration, API gateway scaffolding, and real-time stress testing under simulated data loads.`
         },
         days: [
           {
