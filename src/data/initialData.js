@@ -241,6 +241,30 @@ export const INITIAL_PORTFOLIO_DATA = {
       image: "assets/certificates/river_venture_studios_bootcamp.jpg"
     },
     {
+      id: "cert-iccsam-2026",
+      title: "Certificate of Appreciation — ICCSAM 2026",
+      issuer: "VETIAS in association with APU Malaysia",
+      issueDate: "August 18, 2026",
+      focus: "Network Traffic Type Categorization Using Machine Learning",
+      signatories: "Dr. V.P. Nallaswamy (Principal, VETIAS) & Thiru. S.D. Chandrasekar (Secretary)",
+      description: "Awarded for presenting peer-reviewed research paper on 'Network Traffic Type Categorization Using Machine Learning' at the 3rd International Conference on Computational Sciences and Applied Mathematics.",
+      credentialUrl: "",
+      pdfUrl: "",
+      image: "assets/certificates/iccsam_2026_certificate.jpg"
+    },
+    {
+      id: "cert-merit-scholarship",
+      title: "Mahatma Gandhi Merit Scholarship Certificate",
+      issuer: "Kumaraguru Institutions / KCLAS",
+      issueDate: "March 26, 2026",
+      focus: "Institutional Academic Excellence (2025–2026)",
+      signatories: "Shri Shankar Vanavarayar (President, KI) & Dr. Deepesh (Principal i/c, KCLAS)",
+      description: "Awarded in recognition of outstanding meritorious academic performance in B.Sc. Data Science and multi-faceted contribution to the institutional ecosystem.",
+      credentialUrl: "",
+      pdfUrl: "",
+      image: "assets/certificates/mahatma_gandhi_merit_scholarship.jpg"
+    },
+    {
       id: "cert-amypo",
       title: "Data Analytical Tool Certification",
       issuer: "Amypo",
