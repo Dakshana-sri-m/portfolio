@@ -13,11 +13,11 @@ export const INITIAL_PORTFOLIO_DATA = {
     portrait: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85",
     avatarAlt: "Dakshana Sri M Editorial Portrait",
     socials: {
-      email: "dakshanasri.m@example.com",
-      linkedin: "https://linkedin.com/in/",
-      github: "https://github.com/Dakshana-sri-m",
-      kaggle: "https://kaggle.com/",
-      leetcode: "https://leetcode.com/"
+      email: "dakshanasrim1406@gmail.com",
+      phone: "8870042836",
+      phoneFormatted: "+91 8870042836",
+      linkedin: "https://www.linkedin.com/in/dakshana-sri-m-aa0b9537b?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      github: "https://github.com/Dakshana-sri-m"
     }
   },
 
@@ -738,7 +738,8 @@ export const INITIAL_PORTFOLIO_DATA = {
   contact: {
     headline: "LET'S BUILD SOMETHING WORTH TALKING ABOUT.",
     subheadline: "Whether you're exploring research collaborations, discussing venture prototypes, or sharing a ground-level business problem — my door is open.",
-    directEmail: "dakshanasri.m@example.com",
+    directEmail: "dakshanasrim1406@gmail.com",
+    phone: "+91 8870042836",
     availability: "Open to Research Opportunities, Prototyping Collaborations & Mentorship",
     city: "Coimbatore, Tamil Nadu, India"
   }
